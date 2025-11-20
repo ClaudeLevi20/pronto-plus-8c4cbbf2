@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import wave1 from "@/assets/wave-1.png";
 
 const faqs = [
   {
@@ -52,11 +51,6 @@ const faqs = [
 export const FAQ = () => {
   return (
     <section className="py-24 px-6 relative overflow-hidden">
-      {/* Wave decorations */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-75 pointer-events-none">
-        <img src={wave1} alt="" className="w-full h-full object-contain" />
-      </div>
-      
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

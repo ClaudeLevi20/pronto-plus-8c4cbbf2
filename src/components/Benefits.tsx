@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card";
 import clinicOffice from "@/assets/clinic-office.jpg";
 import { TrendingUp, Users, DollarSign } from "lucide-react";
-import wave3 from "@/assets/wave-3.png";
 
 const benefits = [
   {
@@ -24,11 +23,6 @@ const benefits = [
 export const Benefits = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Wave decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 opacity-75 pointer-events-none">
-        <img src={wave3} alt="" className="w-full h-full object-contain" />
-      </div>
-      
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold">

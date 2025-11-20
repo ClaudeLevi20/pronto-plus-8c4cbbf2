@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import wave2 from "@/assets/wave-2.png";
 
 const steps = [
   {
@@ -25,11 +24,6 @@ export const HowItWorks = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      
-      {/* Wave decorations */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-75 pointer-events-none">
-        <img src={wave2} alt="" className="w-full h-full object-contain" />
-      </div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 space-y-4">
