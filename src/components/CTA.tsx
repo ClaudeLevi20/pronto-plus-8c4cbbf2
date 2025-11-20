@@ -11,10 +11,10 @@ export const CTA = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
       
       {/* Wave line decorations */}
-      <div className="wave-decoration top-0 left-0 rotate-45" style={{
+      <div className="wave-decoration top-0 left-0 -rotate-45" style={{
       backgroundImage: `url(${waveLines})`
     }} />
-      <div className="wave-decoration bottom-0 right-0 rotate-45" style={{
+      <div className="wave-decoration bottom-0 right-0 rotate-[135deg]" style={{
       backgroundImage: `url(${waveLines})`
     }} />
       
