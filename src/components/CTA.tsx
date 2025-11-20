@@ -16,6 +16,11 @@ export const CTA = () => {
       <div className="wave-decoration top-0 left-0" style={{ backgroundImage: `url(${waveLines})` }} />
       <div className="wave-decoration bottom-0 right-0 rotate-180" style={{ backgroundImage: `url(${waveLines})` }} />
       
+      {/* Decorative elements */}
+      <div className="absolute top-10 left-10 w-20 h-20 border border-primary/20 rounded-full" />
+      <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
+      <div className="absolute top-1/2 left-1/3 w-3 h-3 bg-primary rounded-full animate-pulse" />
+
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
