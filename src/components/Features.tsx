@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Phone, Calendar, MessageSquare, Clock, Zap, Shield } from "lucide-react";
-import waveLines from "@/assets/wave-lines.png";
+import wave1 from "@/assets/wave-1.png";
 
 const features = [
   {
@@ -38,9 +38,10 @@ const features = [
 export const Features = () => {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Wave line decorations */}
-      <div className="wave-decoration top-10 left-0" style={{ backgroundImage: `url(${waveLines})` }} />
-      <div className="wave-decoration bottom-10 right-0 rotate-180" style={{ backgroundImage: `url(${waveLines})` }} />
+      {/* Wave decorations */}
+      <div className="absolute top-0 left-0 w-96 h-96 opacity-75 pointer-events-none">
+        <img src={wave1} alt="" className="w-full h-full object-contain" />
+      </div>
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
