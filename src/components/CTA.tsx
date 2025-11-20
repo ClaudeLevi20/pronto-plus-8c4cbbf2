@@ -3,21 +3,23 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { DemoBookingModal } from "./DemoBookingModal";
 import waveLines from "@/assets/wave-lines.png";
-
 export const CTA = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  return (
-    <section className="py-24 relative overflow-hidden">
+  return <section className="py-24 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
       
       {/* Wave line decorations */}
-      <div className="wave-decoration top-0 left-0 rotate-45" style={{ backgroundImage: `url(${waveLines})` }} />
-      <div className="wave-decoration bottom-0 right-0 rotate-45" style={{ backgroundImage: `url(${waveLines})` }} />
+      <div className="wave-decoration top-0 left-0 rotate-45" style={{
+      backgroundImage: `url(${waveLines})`
+    }} />
+      <div className="wave-decoration bottom-0 right-0 rotate-45" style={{
+      backgroundImage: `url(${waveLines})`
+    }} />
       
       {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-20 h-20 border border-primary/20 rounded-full" />
+      
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
       <div className="absolute top-1/2 left-1/3 w-3 h-3 bg-primary rounded-full animate-pulse" />
 
@@ -41,20 +43,11 @@ export const CTA = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="group"
-              onClick={() => setIsDemoModalOpen(true)}
-            >
+            <Button variant="hero" size="lg" className="group" onClick={() => setIsDemoModalOpen(true)}>
               Start Free Trial
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => setIsDemoModalOpen(true)}
-            >
+            <Button variant="outline" size="lg" onClick={() => setIsDemoModalOpen(true)}>
               Schedule Demo Call
             </Button>
           </div>
@@ -66,6 +59,5 @@ export const CTA = () => {
       </div>
       
       <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
-    </section>
-  );
+    </section>;
 };
