@@ -11,11 +11,11 @@ export const CTA = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Background image with overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${ctaBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-background/80 to-background/90" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.15),transparent_50%)]" />
 
       {/* Decorative elements */}
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
