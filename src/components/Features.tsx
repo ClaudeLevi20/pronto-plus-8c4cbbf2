@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Phone, Calendar, MessageSquare, Clock, Zap, Shield } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -35,10 +37,15 @@ const features = [
 ];
 
 export const Features = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
+        <div 
+          ref={headerRef}
+          className={cn("text-center mb-16 space-y-4 scroll-reveal", headerVisible && "revealed")}
+        >
           <h2 className="text-4xl md:text-5xl font-bold">
             Everything Your Front Desk Needs
           </h2>
@@ -48,22 +55,31 @@ export const Features = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <Card 
-              key={index}
-              className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-            >
-              <div className="mb-4">
-                <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                  <feature.icon className="w-6 h-6" />
-                </div>
+          {features.map((feature, index) => {
+            const { ref, isVisible } = useScrollReveal();
+            return (
+              <div
+                key={index}
+                ref={ref}
+                className={cn("scroll-reveal", isVisible && "revealed")}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <Card 
+                  className="h-full p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+                >
+                  <div className="mb-4">
+                    <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                      <feature.icon className="w-6 h-6" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </Card>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
