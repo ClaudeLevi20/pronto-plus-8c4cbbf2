@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import waveLines from "@/assets/wave-lines.png";
+import wave2 from "@/assets/wave-2.png";
 
 const steps = [
   {
@@ -26,9 +26,10 @@ export const HowItWorks = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
       
-      {/* Wave line decorations */}
-      <div className="wave-decoration top-20 right-0 rotate-180" style={{ backgroundImage: `url(${waveLines})` }} />
-      <div className="wave-decoration bottom-20 left-0" style={{ backgroundImage: `url(${waveLines})` }} />
+      {/* Wave decorations */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-75 pointer-events-none">
+        <img src={wave2} alt="" className="w-full h-full object-contain" />
+      </div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 space-y-4">
