@@ -3,26 +3,41 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { DemoBookingModal } from "./DemoBookingModal";
 import waveLines from "@/assets/wave-lines.png";
+
 export const CTA = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  return <section className="py-24 relative overflow-hidden">
+
+  return (
+    <section className="py-24 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
-      
+
       {/* Wave line decorations */}
-      <div className="wave-decoration top-0 left-0 -rotate-45" style={{
-      backgroundImage: `url(${waveLines})`
-    }} />
-      <div className="wave-decoration bottom-0 right-0 rotate-[135deg]" style={{
-      backgroundImage: `url(${waveLines})`
-    }} />
-      
+      <div
+        className="absolute top-0 left-0 w-64 h-64 opacity-30"
+        style={{
+          backgroundImage: `url(${waveLines})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(-45deg)",
+          transformOrigin: "top left",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-64 h-64 opacity-30"
+        style={{
+          backgroundImage: `url(${waveLines})`,
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(135deg)",
+          transformOrigin: "bottom right",
+        }}
+      />
+
       {/* Decorative elements */}
-      
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
       <div className="absolute top-1/2 left-1/3 w-3 h-3 bg-primary rounded-full animate-pulse" />
-
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -38,8 +53,8 @@ export const CTA = () => {
           </h2>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Join leading orthodontist practices using Pronto to deliver exceptional patient experiences 
-            while reducing operational costs.
+            Join leading orthodontist practices using Pronto to deliver exceptional patient experiences while reducing
+            operational costs.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -52,12 +67,11 @@ export const CTA = () => {
             </Button>
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            No credit card required • 14-day free trial • Cancel anytime
-          </p>
+          <p className="text-sm text-muted-foreground">No credit card required • 14-day free trial • Cancel anytime</p>
         </div>
       </div>
-      
+
       <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
-    </section>;
+    </section>
+  );
 };
