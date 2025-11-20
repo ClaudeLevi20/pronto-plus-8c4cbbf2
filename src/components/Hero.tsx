@@ -17,6 +17,10 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
+      {/* Contour line decorations */}
+      <div className="contour-lines top-0 left-0" />
+      <div className="contour-lines bottom-0 right-0" />
+      
       {/* Floating elements */}
       <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-pulse" />
       <div className="absolute top-40 right-20 w-3 h-3 bg-primary/60 rounded-full animate-pulse delay-300" />

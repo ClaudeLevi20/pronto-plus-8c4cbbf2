@@ -25,6 +25,10 @@ export const HowItWorks = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
       
+      {/* Contour line decorations */}
+      <div className="contour-lines top-20 right-0" />
+      <div className="contour-lines bottom-20 left-0" />
+      
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold">

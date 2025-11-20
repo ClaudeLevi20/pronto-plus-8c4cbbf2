@@ -8,6 +8,10 @@ export const CTA = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
       
+      {/* Contour line decorations */}
+      <div className="contour-lines top-0 left-0" />
+      <div className="contour-lines bottom-0 right-0" />
+      
       {/* Decorative elements */}
       <div className="absolute top-10 left-10 w-20 h-20 border border-primary/20 rounded-full" />
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
