@@ -15,12 +15,12 @@ export const CTA = () => {
 
       {/* Wave line decorations */}
       <div
-        className="absolute top-0 left-0 w-64 h-64 opacity-90"
+        className="absolute top-0 left-0 w-64 h-64 opacity-99"
         style={{
           backgroundImage: `url(${waveLines})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
-          transform: "rotate(-45deg)",
+          transform: "rotate(-320deg)",
           transformOrigin: "top left",
         }}
       />
