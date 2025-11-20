@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, Sparkles } from "lucide-react";
+import { DemoBookingModal } from "./DemoBookingModal";
 import heroBg from "@/assets/hero-bg.jpg";
 import waveLines from "@/assets/wave-lines.png";
 
 export const Hero = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -47,11 +50,20 @@ export const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button variant="hero" size="lg" className="group">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="group"
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               Get Started Free
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               <Phone className="w-4 h-4" />
               Book a Demo
             </Button>
@@ -72,6 +84,8 @@ export const Hero = () => {
 
       {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      
+      <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
     </section>
   );
 };
