@@ -17,6 +17,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <Stats />
         <div id="features">
           <Features />
         </div>
@@ -27,7 +28,6 @@ const Index = () => {
           <Benefits />
         </div>
         <TrustBadges />
-        <Stats />
         <div id="testimonials">
           <Testimonials />
         </div>
