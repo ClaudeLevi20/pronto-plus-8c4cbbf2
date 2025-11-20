@@ -2,13 +2,18 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { DemoBookingModal } from "./DemoBookingModal";
+import ctaBg from "@/assets/cta-bg.jpg";
 
 export const CTA = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Gradient background */}
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{ backgroundImage: `url(${ctaBg})` }}
+      />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
 
