@@ -20,8 +20,14 @@ export const Navbar = () => {
             <a href="#benefits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Benefits
             </a>
+            <a href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Testimonials
+            </a>
             <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Pricing
+            </a>
+            <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              FAQ
             </a>
           </div>
 
