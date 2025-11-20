@@ -15,7 +15,7 @@ export const CTA = () => {
 
       {/* Wave line decorations */}
       <div
-        className="absolute top-0 left-0 w-64 h-64 opacity-75"
+        className="absolute top-0 left-0 w-64 h-64 opacity-90"
         style={{
           backgroundImage: `url(${waveLines})`,
           backgroundSize: "contain",
