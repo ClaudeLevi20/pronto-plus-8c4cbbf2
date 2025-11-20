@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import waveLines from "@/assets/wave-lines.png";
 
 export const Hero = () => {
   return (
@@ -17,9 +18,9 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
-      {/* Contour line decorations */}
-      <div className="contour-lines top-0 left-0" />
-      <div className="contour-lines bottom-0 right-0" />
+      {/* Wave line decorations */}
+      <div className="wave-decoration top-0 left-0" style={{ backgroundImage: `url(${waveLines})` }} />
+      <div className="wave-decoration bottom-0 right-0 rotate-180" style={{ backgroundImage: `url(${waveLines})` }} />
       
       {/* Floating elements */}
       <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-pulse" />
