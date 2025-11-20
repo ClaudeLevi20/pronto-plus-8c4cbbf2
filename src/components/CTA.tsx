@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { DemoBookingModal } from "./DemoBookingModal";
-import waveLines from "@/assets/wave-lines.png";
 
 export const CTA = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -12,28 +11,6 @@ export const CTA = () => {
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
-
-      {/* Wave line decorations */}
-      <div
-        className="absolute top-0 left-0 w-64 h-64 opacity-99"
-        style={{
-          backgroundImage: `url(${waveLines})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          transform: "rotate(-323deg)",
-          transformOrigin: "top left",
-        }}
-      />
-      <div
-        className="absolute bottom-0 right-0 w-64 h-64 opacity-30"
-        style={{
-          backgroundImage: `url(${waveLines})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          transform: "rotate(135deg)",
-          transformOrigin: "bottom right",
-        }}
-      />
 
       {/* Decorative elements */}
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
