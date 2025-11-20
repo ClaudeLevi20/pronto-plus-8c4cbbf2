@@ -89,7 +89,7 @@ All colors MUST be HSL.
     position: absolute;
     width: 500px;
     height: 250px;
-    opacity: 0.5;
+    opacity: 0.75;
     pointer-events: none;
     background-size: contain;
     background-repeat: no-repeat;
@@ -100,11 +100,11 @@ All colors MUST be HSL.
   @keyframes wave-float {
     0%, 100% {
       transform: translateY(0) scale(1);
-      opacity: 0.5;
+      opacity: 0.75;
     }
     50% {
       transform: translateY(-10px) scale(1.02);
-      opacity: 0.6;
+      opacity: 0.85;
     }
   }
 }
