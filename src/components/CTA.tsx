@@ -20,7 +20,7 @@ export const CTA = () => {
           backgroundImage: `url(${waveLines})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
-          transform: "rotate(-300deg)",
+          transform: "rotate(-323deg)",
           transformOrigin: "top left",
         }}
       />
