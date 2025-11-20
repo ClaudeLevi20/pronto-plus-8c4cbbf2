@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import wave4 from "@/assets/wave-4.png";
 
 const testimonials = [
   {
@@ -63,11 +62,6 @@ const testimonials = [
 export const Testimonials = () => {
   return (
     <section className="py-24 px-6 bg-secondary/30 relative overflow-hidden">
-      {/* Wave decorations */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-75 pointer-events-none">
-        <img src={wave4} alt="" className="w-full h-full object-contain" />
-      </div>
-      
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

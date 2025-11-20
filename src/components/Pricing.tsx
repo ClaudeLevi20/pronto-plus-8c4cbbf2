@@ -3,7 +3,6 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DemoBookingModal } from "./DemoBookingModal";
-import wave5 from "@/assets/wave-5.png";
 
 const pricingTiers = [
   {
@@ -62,11 +61,6 @@ export const Pricing = () => {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden">
-      {/* Wave decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 opacity-75 pointer-events-none">
-        <img src={wave5} alt="" className="w-full h-full object-contain" />
-      </div>
-      
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
