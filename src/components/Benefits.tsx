@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import clinicOffice from "@/assets/clinic-office.jpg";
 import { TrendingUp, Users, DollarSign } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { cn } from "@/lib/utils";
 
 const benefits = [
   {
@@ -21,10 +23,16 @@ const benefits = [
 ];
 
 export const Benefits = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
+  
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
+        <div 
+          ref={headerRef}
+          className={cn("text-center mb-16 space-y-4 scroll-reveal", headerVisible && "revealed")}
+        >
           <h2 className="text-4xl md:text-5xl font-bold">
             Transform Your Practice
           </h2>
@@ -35,7 +43,10 @@ export const Benefits = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Image */}
-          <div className="relative group">
+          <div 
+            ref={imageRef}
+            className={cn("relative group scroll-reveal", imageVisible && "revealed")}
+          >
             <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-3xl group-hover:blur-2xl transition-all" />
             <div className="relative overflow-hidden rounded-2xl border border-border/50">
               <img 
@@ -48,26 +59,35 @@ export const Benefits = () => {
 
           {/* Benefits Cards */}
           <div className="space-y-6">
-            {benefits.map((benefit, index) => (
-              <Card 
-                key={index}
-                className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
-              >
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary">
-                      <benefit.icon className="w-6 h-6" />
+            {benefits.map((benefit, index) => {
+              const { ref, isVisible } = useScrollReveal();
+              return (
+                <div
+                  key={index}
+                  ref={ref}
+                  className={cn("scroll-reveal", isVisible && "revealed")}
+                  style={{ transitionDelay: `${index * 150}ms` }}
+                >
+                  <Card 
+                    className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
+                  >
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="inline-flex p-3 rounded-lg bg-primary/10 text-primary">
+                          <benefit.icon className="w-6 h-6" />
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {benefit.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
+                  </Card>
                 </div>
-              </Card>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

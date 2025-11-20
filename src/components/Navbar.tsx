@@ -4,6 +4,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Logo } from "./Logo";
 import { DemoBookingModal } from "./DemoBookingModal";
 import { Menu, X } from "lucide-react";
+import { useScroll } from "@/hooks/use-scroll";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -17,9 +19,17 @@ const navLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const scrolled = useScroll(50);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <nav 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-500",
+        scrolled 
+          ? "bg-background/95 border-border shadow-lg shadow-primary/5" 
+          : "bg-background/80 border-border/50"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Logo />
