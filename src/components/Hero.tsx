@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, Sparkles } from "lucide-react";
 import { DemoBookingModal } from "./DemoBookingModal";
 import heroBg from "@/assets/hero-bg.jpg";
-import waveLines from "@/assets/wave-lines.png";
 
 export const Hero = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -21,10 +20,6 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
       </div>
 
-      {/* Wave line decorations */}
-      <div className="wave-decoration top-0 left-0" style={{ backgroundImage: `url(${waveLines})` }} />
-      <div className="wave-decoration bottom-0 right-0 rotate-180" style={{ backgroundImage: `url(${waveLines})` }} />
-      
       {/* Floating elements */}
       <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-pulse" />
       <div className="absolute top-40 right-20 w-3 h-3 bg-primary/60 rounded-full animate-pulse delay-300" />
