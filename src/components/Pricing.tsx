@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { DemoBookingModal } from "./DemoBookingModal";
 
 const pricingTiers = [
   {
@@ -55,6 +57,8 @@ const pricingTiers = [
 ];
 
 export const Pricing = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
     <section className="py-24 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -114,6 +118,7 @@ export const Pricing = () => {
                   variant={tier.popular ? "hero" : "outline"}
                   size="lg"
                   className="w-full"
+                  onClick={() => setIsDemoModalOpen(true)}
                 >
                   {tier.cta}
                 </Button>
@@ -122,6 +127,8 @@ export const Pricing = () => {
           ))}
         </div>
       </div>
+      
+      <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
     </section>
   );
 };

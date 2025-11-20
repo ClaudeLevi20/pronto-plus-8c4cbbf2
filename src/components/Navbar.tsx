@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Logo } from "./Logo";
+import { DemoBookingModal } from "./DemoBookingModal";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
@@ -39,7 +41,11 @@ export const Navbar = () => {
             <Button variant="ghost" className="hidden md:inline-flex">
               Sign In
             </Button>
-            <Button variant="default" className="hidden sm:inline-flex">
+            <Button 
+              variant="default" 
+              className="hidden sm:inline-flex"
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               Get Started
             </Button>
             
@@ -71,7 +77,14 @@ export const Navbar = () => {
                     <Button variant="outline" className="w-full">
                       Sign In
                     </Button>
-                    <Button variant="default" className="w-full">
+                    <Button 
+                      variant="default" 
+                      className="w-full"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsDemoModalOpen(true);
+                      }}
+                    >
                       Get Started
                     </Button>
                   </div>
@@ -81,6 +94,8 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+      
+      <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
     </nav>
   );
 };
