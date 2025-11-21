@@ -11,7 +11,7 @@ export const CTA = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${ctaBg})` }} />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 via-background/95 to-background/98" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-background/95 to-background/98" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.15),transparent_50%)]" />
 
       {/* Decorative elements */}
