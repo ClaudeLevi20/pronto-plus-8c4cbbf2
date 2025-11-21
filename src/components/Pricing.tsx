@@ -7,7 +7,7 @@ import { DemoBookingModal } from "./DemoBookingModal";
 const pricingTiers = [
   {
     name: "Starter",
-    price: "$199",
+    price: "$499",
     description: "Perfect for small practices getting started",
     features: [
       "AI-powered call handling",
@@ -15,14 +15,14 @@ const pricingTiers = [
       "Appointment scheduling",
       "Basic analytics",
       "Email support",
-      "24/7 availability"
+      "24/7 availability",
     ],
     cta: "Start Free Trial",
-    popular: false
+    popular: false,
   },
   {
     name: "Professional",
-    price: "$399",
+    price: "$699",
     description: "Ideal for growing orthodontic practices",
     features: [
       "Everything in Starter",
@@ -32,10 +32,10 @@ const pricingTiers = [
       "Priority phone support",
       "Custom voice training",
       "Detailed analytics dashboard",
-      "Multi-location support"
+      "Multi-location support",
     ],
     cta: "Start Free Trial",
-    popular: true
+    popular: true,
   },
   {
     name: "Enterprise",
@@ -49,11 +49,11 @@ const pricingTiers = [
       "Advanced reporting & insights",
       "White-label options",
       "SLA guarantee",
-      "On-premise deployment option"
+      "On-premise deployment option",
     ],
     cta: "Contact Sales",
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 export const Pricing = () => {
@@ -67,18 +67,16 @@ export const Pricing = () => {
             Simple, Transparent <span className="text-gradient">Pricing</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect plan for your practice. All plans include a 14-day free trial.
+            Choose the perfect plan for your practice. All plans include a 30-day free trial.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {pricingTiers.map((tier) => (
-            <Card 
+            <Card
               key={tier.name}
               className={`relative flex flex-col ${
-                tier.popular 
-                  ? 'border-primary shadow-primary scale-105' 
-                  : 'border-border'
+                tier.popular ? "border-primary shadow-primary scale-105" : "border-border"
               }`}
             >
               {tier.popular && (
@@ -86,19 +84,13 @@ export const Pricing = () => {
                   Most Popular
                 </div>
               )}
-              
+
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
-                <CardDescription className="text-muted-foreground mb-4">
-                  {tier.description}
-                </CardDescription>
+                <CardDescription className="text-muted-foreground mb-4">{tier.description}</CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold text-foreground">
-                    {tier.price}
-                  </span>
-                  {tier.price !== "Custom" && (
-                    <span className="text-muted-foreground">/month</span>
-                  )}
+                  <span className="text-5xl font-bold text-foreground">{tier.price}</span>
+                  {tier.price !== "Custom" && <span className="text-muted-foreground">/month</span>}
                 </div>
               </CardHeader>
 
@@ -114,7 +106,7 @@ export const Pricing = () => {
               </CardContent>
 
               <CardFooter className="pt-8">
-                <Button 
+                <Button
                   variant={tier.popular ? "hero" : "outline"}
                   size="lg"
                   className="w-full"
@@ -127,7 +119,7 @@ export const Pricing = () => {
           ))}
         </div>
       </div>
-      
+
       <DemoBookingModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
     </section>
   );
