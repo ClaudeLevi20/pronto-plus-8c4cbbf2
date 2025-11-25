@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CountdownTimer } from "./CountdownTimer";
 import foundingHero from "@/assets/founding-hero.jpg";
 
 interface FoundingHeroProps {
@@ -48,7 +49,11 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+          <div className="flex justify-center pt-4">
+            <CountdownTimer className="max-w-2xl w-full" />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button 
               size="lg" 
               onClick={onSignupClick}

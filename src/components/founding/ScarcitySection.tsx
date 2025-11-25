@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { SpotsCounter } from "./SpotsCounter";
+import { CountdownTimer } from "./CountdownTimer";
 import { Clock, Lock, Star, TrendingUp } from "lucide-react";
 
 export const ScarcitySection = () => {
@@ -17,6 +18,10 @@ export const ScarcitySection = () => {
             <p className="text-xl text-muted-foreground">
               Once 100 practices join, the pilot closes permanently.
             </p>
+
+            <div className="flex justify-center pt-4">
+              <CountdownTimer className="max-w-2xl w-full" />
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
