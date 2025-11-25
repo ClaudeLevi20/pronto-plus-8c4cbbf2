@@ -9,7 +9,7 @@ interface CountdownTimerProps {
 }
 
 export const CountdownTimer = ({ 
-  targetDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Default: 7 days from now
+  targetDate = new Date(Date.now() + 36 * 24 * 60 * 60 * 1000), // Default: 36 days from now
   className = "",
   compact = false
 }: CountdownTimerProps) => {
