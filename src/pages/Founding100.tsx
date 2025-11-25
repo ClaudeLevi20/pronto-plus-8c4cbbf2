@@ -1,0 +1,39 @@
+import { useState } from "react";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { FoundingHero } from "@/components/founding/FoundingHero";
+import { WhyPilotExists } from "@/components/founding/WhyPilotExists";
+import { FounderBenefits } from "@/components/founding/FounderBenefits";
+import { HowProntoWorks } from "@/components/founding/HowProntoWorks";
+import { WhyOrthoLove } from "@/components/founding/WhyOrthoLove";
+import { HowToJoin } from "@/components/founding/HowToJoin";
+import { ScarcitySection } from "@/components/founding/ScarcitySection";
+import { FoundingCTA } from "@/components/founding/FoundingCTA";
+import { FoundingSignupModal } from "@/components/founding/FoundingSignupModal";
+
+const Founding100 = () => {
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen">
+      <Navbar />
+      <main>
+        <FoundingHero onSignupClick={() => setIsSignupModalOpen(true)} />
+        <WhyPilotExists />
+        <FounderBenefits onSignupClick={() => setIsSignupModalOpen(true)} />
+        <HowProntoWorks />
+        <WhyOrthoLove />
+        <HowToJoin />
+        <ScarcitySection />
+        <FoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
+      </main>
+      <Footer />
+      <FoundingSignupModal 
+        open={isSignupModalOpen} 
+        onOpenChange={setIsSignupModalOpen} 
+      />
+    </div>
+  );
+};
+
+export default Founding100;
