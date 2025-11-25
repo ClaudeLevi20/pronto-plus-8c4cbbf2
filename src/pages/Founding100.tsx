@@ -11,6 +11,7 @@ import { ScarcitySection } from "@/components/founding/ScarcitySection";
 import { FoundingCTA } from "@/components/founding/FoundingCTA";
 import { FoundingSignupModal } from "@/components/founding/FoundingSignupModal";
 import { StickyFoundingCTA } from "@/components/founding/StickyFoundingCTA";
+import { FoundingFAQ } from "@/components/founding/FoundingFAQ";
 
 const Founding100 = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
@@ -26,6 +27,7 @@ const Founding100 = () => {
         <WhyOrthoLove />
         <HowToJoin />
         <ScarcitySection />
+        <FoundingFAQ />
         <FoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
       </main>
       <Footer />
