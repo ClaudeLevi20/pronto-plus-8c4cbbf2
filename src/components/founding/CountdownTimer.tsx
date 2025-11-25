@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock } from "lucide-react";
 
@@ -8,41 +8,47 @@ interface CountdownTimerProps {
   compact?: boolean;
 }
 
+const calculateTimeLeft = (targetTime: number) => {
+  const now = new Date().getTime();
+  const difference = targetTime - now;
+
+  if (difference > 0) {
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((difference % (1000 * 60)) / 1000)
+    };
+  }
+  return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+};
+
 export const CountdownTimer = ({ 
-  targetDate = new Date(Date.now() + 36 * 24 * 60 * 60 * 1000), // Default: 36 days from now
+  targetDate,
   className = "",
   compact = false
 }: CountdownTimerProps) => {
-  const [timeRemaining, setTimeRemaining] = useState({
-    days: 36,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
+  // Memoize the target timestamp to prevent re-renders
+  const targetTime = useMemo(() => {
+    if (targetDate) {
+      return targetDate.getTime();
+    }
+    // Default: 36 days from now
+    return Date.now() + 36 * 24 * 60 * 60 * 1000;
+  }, [targetDate]);
+
+  const [timeRemaining, setTimeRemaining] = useState(() => calculateTimeLeft(targetTime));
 
   useEffect(() => {
-    const calculateTimeRemaining = () => {
-      const now = new Date().getTime();
-      const target = targetDate.getTime();
-      const difference = target - now;
-
-      if (difference > 0) {
-        setTimeRemaining({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
+    const updateTimer = () => {
+      setTimeRemaining(calculateTimeLeft(targetTime));
     };
 
-    calculateTimeRemaining();
-    const interval = setInterval(calculateTimeRemaining, 1000);
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
-  }, [targetDate]);
+  }, [targetTime]);
 
   if (compact) {
     return (
