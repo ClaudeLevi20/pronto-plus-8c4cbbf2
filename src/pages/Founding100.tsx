@@ -10,6 +10,7 @@ import { HowToJoin } from "@/components/founding/HowToJoin";
 import { ScarcitySection } from "@/components/founding/ScarcitySection";
 import { FoundingCTA } from "@/components/founding/FoundingCTA";
 import { FoundingSignupModal } from "@/components/founding/FoundingSignupModal";
+import { StickyFoundingCTA } from "@/components/founding/StickyFoundingCTA";
 
 const Founding100 = () => {
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
@@ -28,10 +29,13 @@ const Founding100 = () => {
         <FoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
       </main>
       <Footer />
+      
       <FoundingSignupModal 
         open={isSignupModalOpen} 
         onOpenChange={setIsSignupModalOpen} 
       />
+      
+      <StickyFoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
     </div>
   );
 };
