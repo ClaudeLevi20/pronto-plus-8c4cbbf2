@@ -14,7 +14,7 @@ export const CountdownTimer = ({
   compact = false
 }: CountdownTimerProps) => {
   const [timeRemaining, setTimeRemaining] = useState({
-    days: 0,
+    days: 36,
     hours: 0,
     minutes: 0,
     seconds: 0
