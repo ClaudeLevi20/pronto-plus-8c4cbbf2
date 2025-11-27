@@ -18,8 +18,8 @@ export const CTA = () => {
       }}
     >
       {/* Background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 via-background/95 to-background/98" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background/60 to-background/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.05),transparent_50%)]" />
 
       {/* Decorative elements */}
       <div className="absolute bottom-10 right-10 w-32 h-32 border border-primary/20 rounded-full" />
