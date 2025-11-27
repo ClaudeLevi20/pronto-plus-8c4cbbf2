@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import wave14 from "@/assets/wave-14.png";
 
 const faqs = [
   {
@@ -50,7 +51,15 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section 
+      className="py-24 px-6 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave14})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

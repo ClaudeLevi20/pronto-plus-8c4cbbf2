@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Phone, Building2, Heart, Clock } from "lucide-react";
+import wave14 from "@/assets/wave-14.png";
 
 interface Stat {
   icon: typeof Phone;
@@ -108,7 +109,15 @@ const Counter = ({ end, duration = 2000, suffix = "", prefix = "" }: CounterProp
 
 export const Stats = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-background via-secondary/20 to-background relative overflow-hidden">
+    <section 
+      className="py-20 px-6 bg-gradient-to-b from-background via-secondary/20 to-background relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave14})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
       
       <div className="max-w-7xl mx-auto relative z-10">
