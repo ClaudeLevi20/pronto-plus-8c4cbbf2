@@ -62,7 +62,7 @@ export const Pricing = () => {
 
   return (
     <section 
-      className="py-24 px-6 relative overflow-hidden"
+      className="py-24 px-4 md:px-6 relative overflow-hidden"
       style={{
         backgroundImage: `url(${wave15})`,
         backgroundSize: 'cover',
@@ -71,21 +71,21 @@ export const Pricing = () => {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-12 md:mb-16 px-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Simple, Transparent <span className="text-gradient">Pricing</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Choose the perfect plan for your practice. All plans include a 30-day free trial.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto px-4">
           {pricingTiers.map((tier) => (
             <Card
               key={tier.name}
               className={`relative flex flex-col ${
-                tier.popular ? "border-primary shadow-primary scale-105" : "border-border"
+                tier.popular ? "border-primary shadow-primary md:scale-105" : "border-border"
               }`}
             >
               {tier.popular && (
@@ -94,11 +94,11 @@ export const Pricing = () => {
                 </div>
               )}
 
-              <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
-                <CardDescription className="text-muted-foreground mb-4">{tier.description}</CardDescription>
+              <CardHeader className="text-center pb-6 md:pb-8">
+                <CardTitle className="text-xl md:text-2xl mb-2">{tier.name}</CardTitle>
+                <CardDescription className="text-sm md:text-base text-muted-foreground mb-4">{tier.description}</CardDescription>
                 <div className="mt-4">
-                  <span className="text-5xl font-bold text-foreground">{tier.price}</span>
+                  <span className="text-4xl md:text-5xl font-bold text-foreground">{tier.price}</span>
                   {tier.price !== "Custom" && <span className="text-muted-foreground">/month</span>}
                 </div>
               </CardHeader>
@@ -114,11 +114,11 @@ export const Pricing = () => {
                 </ul>
               </CardContent>
 
-              <CardFooter className="pt-8">
+              <CardFooter className="pt-6 md:pt-8">
                 <Button
                   variant={tier.popular ? "hero" : "outline"}
                   size="lg"
-                  className="w-full"
+                  className="w-full text-sm md:text-base"
                   onClick={() => setIsDemoModalOpen(true)}
                 >
                   {tier.cta}
