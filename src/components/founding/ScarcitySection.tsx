@@ -7,7 +7,7 @@ import wave14 from "@/assets/wave-14.png";
 export const ScarcitySection = () => {
   return (
     <section 
-      className="py-24 relative overflow-hidden min-h-screen"
+      className="py-24 relative overflow-hidden"
       style={{
         backgroundImage: `url(${wave14})`,
         backgroundSize: 'cover',

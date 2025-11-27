@@ -9,7 +9,7 @@ import wave15 from "@/assets/wave-15.png";
 export const FoundingFAQ = () => {
   return (
     <section 
-      className="py-24 bg-background/50 relative overflow-hidden min-h-screen"
+      className="py-24 bg-background/50 relative overflow-hidden"
       style={{
         backgroundImage: `url(${wave15})`,
         backgroundSize: 'cover',
