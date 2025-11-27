@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Heart, Zap, Calendar, Shield, AlertCircle, Users, ArrowRightLeft, Settings } from "lucide-react";
 import foundingHappyParent from "@/assets/founding-happy-parent.jpg";
-import wave11 from "@/assets/wave-11.png";
+import wave14 from "@/assets/wave-14.png";
 
 export const WhyOrthoLove = () => {
   const features = [
@@ -17,12 +17,15 @@ export const WhyOrthoLove = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <img 
-        src={wave11}
-        alt="Wave decoration"
-        className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
-      />
+    <section 
+      className="py-24 relative overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${wave14})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
