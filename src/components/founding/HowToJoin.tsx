@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import wave12 from "@/assets/wave-12.png";
+import wave15 from "@/assets/wave-15.png";
 
 export const HowToJoin = () => {
   const steps = [
@@ -31,12 +31,15 @@ export const HowToJoin = () => {
   ];
 
   return (
-    <section className="py-24 bg-card/50 relative overflow-hidden">
-      <img 
-        src={wave12}
-        alt="Wave decoration"
-        className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
-      />
+    <section 
+      className="py-24 bg-card/50 relative overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${wave15})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="text-center space-y-4">

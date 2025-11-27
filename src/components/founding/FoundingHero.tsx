@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
 import foundingHero from "@/assets/founding-hero.jpg";
-import wave11 from "@/assets/wave-11.png";
+import wave14 from "@/assets/wave-14.png";
 
 interface FoundingHeroProps {
   onSignupClick: () => void;
@@ -10,7 +10,15 @@ interface FoundingHeroProps {
 
 export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave14})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -19,11 +27,6 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/90 to-background" />
-        <img 
-          src={wave11}
-          alt="Wave decoration"
-          className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
-        />
       </div>
 
       {/* Content */}
