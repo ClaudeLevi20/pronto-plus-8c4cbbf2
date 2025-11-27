@@ -12,7 +12,7 @@ export const FounderBenefits = ({ onSignupClick }: FounderBenefitsProps) => {
   return (
     <section 
       id="benefits"
-      className="py-24 relative overflow-hidden min-h-screen"
+      className="py-24 relative overflow-hidden"
       style={{
         backgroundImage: `url(${wave14})`,
         backgroundSize: 'cover',
