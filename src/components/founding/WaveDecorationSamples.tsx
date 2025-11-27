@@ -17,7 +17,7 @@ export const WaveDecorationSamples = () => {
               <img 
                 src={wave11}
                 alt="Wave background overlay"
-                className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-contain opacity-70 pointer-events-none"
               />
               
               <div className="relative z-10 max-w-2xl">
@@ -44,7 +44,7 @@ export const WaveDecorationSamples = () => {
               <img 
                 src={wave12}
                 alt="Wave background overlay"
-                className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-contain opacity-70 pointer-events-none"
               />
               
               <div className="relative z-10 max-w-2xl">
@@ -74,19 +74,19 @@ export const WaveDecorationSamples = () => {
                 <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-6 relative h-48 border border-border overflow-hidden">
                   <img 
                     src={wave11}
-                    alt="Wave 11 - 20% opacity"
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+                    alt="Wave 11 - 60% opacity"
+                    className="absolute inset-0 w-full h-full object-contain opacity-60 pointer-events-none"
                   />
-                  <p className="relative z-10 text-sm font-medium">20% Opacity</p>
+                  <p className="relative z-10 text-sm font-medium">60% Opacity</p>
                 </div>
                 
                 <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-6 relative h-48 border border-border overflow-hidden">
                   <img 
                     src={wave11}
-                    alt="Wave 11 - 40% opacity"
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+                    alt="Wave 11 - 80% opacity"
+                    className="absolute inset-0 w-full h-full object-contain opacity-80 pointer-events-none"
                   />
-                  <p className="relative z-10 text-sm font-medium">40% Opacity</p>
+                  <p className="relative z-10 text-sm font-medium">80% Opacity</p>
                 </div>
               </div>
 
@@ -97,19 +97,19 @@ export const WaveDecorationSamples = () => {
                 <div className="bg-gradient-to-br from-primary/10 to-card rounded-lg p-6 relative h-48 border border-primary/20 overflow-hidden">
                   <img 
                     src={wave12}
-                    alt="Wave 12 - 20% opacity"
-                    className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+                    alt="Wave 12 - 60% opacity"
+                    className="absolute inset-0 w-full h-full object-contain opacity-60 pointer-events-none"
                   />
-                  <p className="relative z-10 text-sm font-medium">20% Opacity</p>
+                  <p className="relative z-10 text-sm font-medium">60% Opacity</p>
                 </div>
                 
                 <div className="bg-gradient-to-br from-primary/10 to-card rounded-lg p-6 relative h-48 border border-primary/20 overflow-hidden">
                   <img 
                     src={wave12}
-                    alt="Wave 12 - 40% opacity"
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+                    alt="Wave 12 - 80% opacity"
+                    className="absolute inset-0 w-full h-full object-contain opacity-80 pointer-events-none"
                   />
-                  <p className="relative z-10 text-sm font-medium">40% Opacity</p>
+                  <p className="relative z-10 text-sm font-medium">80% Opacity</p>
                 </div>
               </div>
             </div>
