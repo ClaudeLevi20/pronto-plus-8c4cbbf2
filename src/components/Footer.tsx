@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
-            <Logo />
+            <Logo size="lg" />
             <p className="text-sm text-muted-foreground">
               AI-powered receptionist for orthodontist clinics
             </p>
