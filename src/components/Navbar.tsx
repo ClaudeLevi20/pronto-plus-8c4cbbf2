@@ -34,35 +34,35 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <Logo size="md" />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Now shows on tablets */}
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden md:inline-flex">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" className="hidden lg:inline-flex">
               Sign In
             </Button>
             <Button 
               variant="default" 
-              className="hidden sm:inline-flex"
+              className="hidden md:inline-flex"
               onClick={() => setIsDemoModalOpen(true)}
             >
               Get Started
             </Button>
             
-            {/* Mobile Menu */}
+            {/* Mobile/Tablet Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
+                <Button variant="ghost" size="icon" className="lg:hidden">
                   <Menu className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
