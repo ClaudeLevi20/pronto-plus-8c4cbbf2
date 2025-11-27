@@ -5,139 +5,113 @@ export const WaveDecorationSamples = () => {
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="container mx-auto max-w-6xl">
-        <h1 className="text-4xl font-bold mb-8 text-center">Wave Decoration Samples</h1>
-        <p className="text-center text-muted-foreground mb-8">Your uploaded transparent wave PNGs</p>
+        <h1 className="text-4xl font-bold mb-8 text-center">Wave Background Overlays</h1>
+        <p className="text-center text-muted-foreground mb-8">Full background images with wave artwork in corners</p>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {/* Wave 11 - Line Pattern */}
+        <div className="space-y-8">
+          {/* Wave 11 Overlay Demo */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-primary">Wave 11 - Line Pattern</h2>
-            <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-8 relative h-96 border border-border overflow-hidden">
+            <h2 className="text-2xl font-bold text-primary">Wave 11 - Full Background Overlay</h2>
+            <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-12 relative min-h-[400px] border border-border overflow-hidden">
+              {/* Wave overlay on top of gradient background */}
               <img 
                 src={wave11}
-                alt="Wave line pattern decoration"
-                className="absolute top-0 left-0 w-64 h-auto opacity-50"
+                alt="Wave background overlay"
+                className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
               />
               
-              <div className="relative z-10">
-                <h3 className="text-xl font-semibold mb-2">Elegant Line Waves</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>✓ Transparent background</li>
-                  <li>✓ Curved line pattern</li>
-                  <li>✓ Perfect for corners</li>
-                  <li>✓ Scales beautifully</li>
+              <div className="relative z-10 max-w-2xl">
+                <h3 className="text-3xl font-bold mb-4">Section with Wave Overlay</h3>
+                <p className="text-muted-foreground text-lg mb-6">
+                  The wave artwork is already positioned in the corners of this full-size transparent PNG. 
+                  It overlays on top of the existing gradient background.
+                </p>
+                <ul className="space-y-2 text-foreground">
+                  <li>✓ Full background coverage</li>
+                  <li>✓ Transparent PNG with waves in corners</li>
+                  <li>✓ Overlays on existing backgrounds</li>
+                  <li>✓ Adjustable opacity</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* Wave 12 - Soft Gradient */}
+          {/* Wave 12 Overlay Demo */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-primary">Wave 12 - Soft Gradient</h2>
-            <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-8 relative h-96 border border-border overflow-hidden">
+            <h2 className="text-2xl font-bold text-primary">Wave 12 - Full Background Overlay</h2>
+            <div className="bg-gradient-to-br from-primary/10 to-card rounded-lg p-12 relative min-h-[400px] border border-primary/20 overflow-hidden">
+              {/* Wave overlay on top of gradient background */}
               <img 
                 src={wave12}
-                alt="Wave gradient decoration"
-                className="absolute top-0 left-0 w-64 h-auto opacity-50"
+                alt="Wave background overlay"
+                className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
               />
               
-              <div className="relative z-10">
-                <h3 className="text-xl font-semibold mb-2">Soft Gradient Waves</h3>
-                <ul className="text-muted-foreground space-y-2">
-                  <li>✓ Transparent background</li>
-                  <li>✓ Smooth gradient effect</li>
-                  <li>✓ Subtle and professional</li>
-                  <li>✓ Modern aesthetic</li>
+              <div className="relative z-10 max-w-2xl">
+                <h3 className="text-3xl font-bold mb-4">Another Section Example</h3>
+                <p className="text-muted-foreground text-lg mb-6">
+                  This shows Wave 12 overlaid on a different background gradient. 
+                  The wave artwork is pre-positioned in the image corners.
+                </p>
+                <ul className="space-y-2 text-foreground">
+                  <li>✓ Works with any background</li>
+                  <li>✓ Maintains visual consistency</li>
+                  <li>✓ Easy to implement</li>
+                  <li>✓ No positioning needed</li>
                 </ul>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="p-6 bg-card/50 rounded-lg border border-primary/20">
-          <h3 className="text-xl font-bold mb-4">Wave 11 - Corner Placement Tests</h3>
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            {/* Top Left */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave11}
-                alt="Top left wave decoration"
-                className="absolute top-0 left-0 w-40 h-auto opacity-40"
-              />
-              <p className="absolute bottom-2 right-2 text-sm text-muted-foreground">Top Left</p>
-            </div>
+          {/* Comparison Grid */}
+          <div className="p-6 bg-card/50 rounded-lg border border-primary/20">
+            <h3 className="text-xl font-bold mb-6">Both Waves - Different Opacity Levels</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Wave 11 variants */}
+              <div className="space-y-4">
+                <h4 className="font-semibold">Wave 11 - Opacity Variants</h4>
+                
+                <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-6 relative h-48 border border-border overflow-hidden">
+                  <img 
+                    src={wave11}
+                    alt="Wave 11 - 20% opacity"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+                  />
+                  <p className="relative z-10 text-sm font-medium">20% Opacity</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-card to-card/50 rounded-lg p-6 relative h-48 border border-border overflow-hidden">
+                  <img 
+                    src={wave11}
+                    alt="Wave 11 - 40% opacity"
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+                  />
+                  <p className="relative z-10 text-sm font-medium">40% Opacity</p>
+                </div>
+              </div>
 
-            {/* Top Right */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave11}
-                alt="Top right wave decoration"
-                className="absolute top-0 right-0 w-40 h-auto opacity-40 -scale-x-100"
-              />
-              <p className="absolute bottom-2 left-2 text-sm text-muted-foreground">Top Right (Flipped)</p>
-            </div>
-
-            {/* Bottom Left */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave11}
-                alt="Bottom left wave decoration"
-                className="absolute bottom-0 left-0 w-40 h-auto opacity-40 -scale-y-100"
-              />
-              <p className="absolute top-2 right-2 text-sm text-muted-foreground">Bottom Left (Flipped)</p>
-            </div>
-
-            {/* Bottom Right */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave11}
-                alt="Bottom right wave decoration"
-                className="absolute bottom-0 right-0 w-40 h-auto opacity-40 -scale-x-100 -scale-y-100"
-              />
-              <p className="absolute top-2 left-2 text-sm text-muted-foreground">Bottom Right (Flipped)</p>
-            </div>
-          </div>
-
-          <h3 className="text-xl font-bold mb-4">Wave 12 - Corner Placement Tests</h3>
-          <div className="grid grid-cols-2 gap-4">
-            {/* Top Left */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave12}
-                alt="Top left wave decoration"
-                className="absolute top-0 left-0 w-40 h-auto opacity-40"
-              />
-              <p className="absolute bottom-2 right-2 text-sm text-muted-foreground">Top Left</p>
-            </div>
-
-            {/* Top Right */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave12}
-                alt="Top right wave decoration"
-                className="absolute top-0 right-0 w-40 h-auto opacity-40 -scale-x-100"
-              />
-              <p className="absolute bottom-2 left-2 text-sm text-muted-foreground">Top Right (Flipped)</p>
-            </div>
-
-            {/* Bottom Left */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave12}
-                alt="Bottom left wave decoration"
-                className="absolute bottom-0 left-0 w-40 h-auto opacity-40 -scale-y-100"
-              />
-              <p className="absolute top-2 right-2 text-sm text-muted-foreground">Bottom Left (Flipped)</p>
-            </div>
-
-            {/* Bottom Right */}
-            <div className="bg-gradient-to-br from-card to-card/50 h-48 rounded-lg relative overflow-hidden border border-border">
-              <img 
-                src={wave12}
-                alt="Bottom right wave decoration"
-                className="absolute bottom-0 right-0 w-40 h-auto opacity-40 -scale-x-100 -scale-y-100"
-              />
-              <p className="absolute top-2 left-2 text-sm text-muted-foreground">Bottom Right (Flipped)</p>
+              {/* Wave 12 variants */}
+              <div className="space-y-4">
+                <h4 className="font-semibold">Wave 12 - Opacity Variants</h4>
+                
+                <div className="bg-gradient-to-br from-primary/10 to-card rounded-lg p-6 relative h-48 border border-primary/20 overflow-hidden">
+                  <img 
+                    src={wave12}
+                    alt="Wave 12 - 20% opacity"
+                    className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+                  />
+                  <p className="relative z-10 text-sm font-medium">20% Opacity</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-primary/10 to-card rounded-lg p-6 relative h-48 border border-primary/20 overflow-hidden">
+                  <img 
+                    src={wave12}
+                    alt="Wave 12 - 40% opacity"
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+                  />
+                  <p className="relative z-10 text-sm font-medium">40% Opacity</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
