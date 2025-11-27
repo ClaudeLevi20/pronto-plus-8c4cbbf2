@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DemoBookingModal } from "./DemoBookingModal";
+import wave15 from "@/assets/wave-15.png";
 
 const pricingTiers = [
   {
@@ -60,7 +61,15 @@ export const Pricing = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section 
+      className="py-24 px-6 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave15})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

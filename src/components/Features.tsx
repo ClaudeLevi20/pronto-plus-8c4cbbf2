@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Phone, Calendar, MessageSquare, Clock, Zap, Shield } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import wave15 from "@/assets/wave-15.png";
 
 const features = [
   {
@@ -40,7 +41,15 @@ export const Features = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section 
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave15})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="container mx-auto px-4">
         <div 
           ref={headerRef}

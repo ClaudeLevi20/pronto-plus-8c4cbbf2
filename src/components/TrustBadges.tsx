@@ -1,4 +1,5 @@
 import { Shield, Lock, FileCheck, Zap } from "lucide-react";
+import wave15 from "@/assets/wave-15.png";
 
 const integrations = [
   { name: "Dolphin", description: "Practice Management" },
@@ -36,7 +37,15 @@ const certifications = [
 
 export const TrustBadges = () => {
   return (
-    <section className="py-16 px-6 bg-secondary/20 border-y border-border">
+    <section 
+      className="py-16 px-6 bg-secondary/20 border-y border-border relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave15})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         {/* Security Certifications */}
         <div className="mb-12">

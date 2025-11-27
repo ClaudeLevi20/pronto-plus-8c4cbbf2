@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import wave14 from "@/assets/wave-14.png";
 
 const steps = [
   {
@@ -21,7 +22,15 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section 
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${wave14})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
       
