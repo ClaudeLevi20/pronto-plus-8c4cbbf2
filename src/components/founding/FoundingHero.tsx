@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
 import foundingHero from "@/assets/founding-hero.jpg";
+import wave11 from "@/assets/wave-11.png";
 
 interface FoundingHeroProps {
   onSignupClick: () => void;
@@ -18,6 +19,11 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/90 to-background" />
+        <img 
+          src={wave11}
+          alt="Wave decoration"
+          className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
+        />
       </div>
 
       {/* Content */}

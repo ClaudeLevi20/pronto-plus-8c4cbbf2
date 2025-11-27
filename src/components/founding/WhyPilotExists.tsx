@@ -1,9 +1,15 @@
 import foundingPartnership from "@/assets/founding-partnership.jpg";
+import wave12 from "@/assets/wave-12.png";
 
 export const WhyPilotExists = () => {
   return (
-    <section className="py-24 bg-card/50">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-card/50 relative overflow-hidden">
+      <img 
+        src={wave12}
+        alt="Wave decoration"
+        className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <div>
             <img 

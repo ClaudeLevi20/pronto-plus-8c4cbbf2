@@ -4,11 +4,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import wave12 from "@/assets/wave-12.png";
 
 export const FoundingFAQ = () => {
   return (
-    <section className="py-24 bg-background/50">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-background/50 relative overflow-hidden">
+      <img 
+        src={wave12}
+        alt="Wave decoration"
+        className="absolute inset-0 w-full h-full object-contain opacity-85 pointer-events-none"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
