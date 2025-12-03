@@ -3,9 +3,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FoundingHero } from "@/components/founding/FoundingHero";
 import { WhyPilotExists } from "@/components/founding/WhyPilotExists";
-import { FounderBenefits } from "@/components/founding/FounderBenefits";
+import { InterestSection } from "@/components/founding/InterestSection";
+import { DesireSection } from "@/components/founding/DesireSection";
 import { HowProntoWorks } from "@/components/founding/HowProntoWorks";
-
 import { HowToJoin } from "@/components/founding/HowToJoin";
 import { ScarcitySection } from "@/components/founding/ScarcitySection";
 import { FoundingCTA } from "@/components/founding/FoundingCTA";
@@ -22,7 +22,8 @@ const Founding100 = () => {
       <main>
         <FoundingHero onSignupClick={() => setIsSignupModalOpen(true)} />
         <WhyPilotExists />
-        <FounderBenefits onSignupClick={() => setIsSignupModalOpen(true)} />
+        <InterestSection />
+        <DesireSection onSignupClick={() => setIsSignupModalOpen(true)} />
         <HowProntoWorks />
         <HowToJoin />
         <ScarcitySection />
