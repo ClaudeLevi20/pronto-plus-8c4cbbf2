@@ -2,6 +2,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PhoneMissed, Clock, Users } from "lucide-react";
 import wave15 from "@/assets/wave-15.png";
 
+const highlightStats = (text: string) => {
+  // Regex to match percentages, dollar amounts, and key numbers like "21x", "3 rings"
+  const pattern = /(\d+–?\d*%|\$[\d,]+[kKmM]?(?:\/year)?(?:–\$[\d,]+[kKmM]?\+?)?|\d+x|\d+ rings?)/g;
+  
+  const parts = text.split(pattern);
+  const matches = text.match(pattern) || [];
+  
+  return parts.reduce((acc: (string | JSX.Element)[], part, index) => {
+    acc.push(part);
+    if (matches[index]) {
+      acc.push(
+        <span key={index} className="text-primary font-semibold">
+          {matches[index]}
+        </span>
+      );
+    }
+    return acc;
+  }, []);
+};
+
 export const WhyPilotExists = () => {
   const problems = [
     {
@@ -72,7 +92,7 @@ export const WhyPilotExists = () => {
                 <CardContent className="space-y-4">
                   <ul className="space-y-2 text-muted-foreground text-sm list-disc list-inside">
                     {problem.stats.map((stat, i) => (
-                      <li key={i} className="leading-relaxed">{stat}</li>
+                      <li key={i} className="leading-relaxed">{highlightStats(stat)}</li>
                     ))}
                   </ul>
                   <p className="text-primary font-semibold text-sm italic border-t border-border/50 pt-4">
