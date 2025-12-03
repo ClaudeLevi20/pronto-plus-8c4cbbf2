@@ -36,34 +36,15 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
             FOUNDING 100
           </Badge>
           
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Never Miss Another{" "}
-            <span className="text-gradient">Patient Call</span>{" "}
-            Again
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            3 Reasons Orthodontic Practices Lose Over{" "}
+            <span className="text-gradient">$330k/Year</span>{" "}
+            — and the $1 Tool That Fixes All Three
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Become a Founding Member and Get After-Hours AI Receptionist Coverage for <span className="text-primary font-bold">$1</span>
+            Missed calls, slow response times, and front-desk overload quietly drain hundreds of thousands from even the best practices. Pronto+ addresses all these challenges—protecting your revenue, easing your team's workload, and giving patients a smoother experience.
           </p>
-
-          <div className="space-y-4 text-lg text-foreground">
-            <p>
-              Parents call when life is busy. Teens call after school. Emergencies happen at all hours.
-            </p>
-            <p className="text-muted-foreground">
-              And every missed call, long wait time, or overwhelmed front desk leads to:
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-primary font-semibold">
-              <span>Lost starts</span>
-              <span>•</span>
-              <span>Stressed staff</span>
-              <span>•</span>
-              <span>Frustrated patients</span>
-            </div>
-            <p className="text-xl font-semibold pt-2">
-              ProntoPlus fixes all three.
-            </p>
-          </div>
 
           <div className="flex justify-center pt-4">
             <CountdownTimer className="max-w-2xl w-full" />
@@ -75,7 +56,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
               onClick={onSignupClick}
               className="text-lg px-8 py-6"
             >
-              Join the Founding 100 for $1
+              Join the Founders Cohort for $1
             </Button>
             <Button 
               size="lg" 
@@ -83,7 +64,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
               onClick={() => document.getElementById('problems')?.scrollIntoView({ behavior: 'smooth' })}
               className="text-lg px-8 py-6"
             >
-              See How It Works
+              See How Pronto+ Works
             </Button>
           </div>
         </div>
