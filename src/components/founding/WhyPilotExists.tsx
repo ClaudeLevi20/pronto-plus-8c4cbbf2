@@ -1,28 +1,40 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PhoneMissed, Clock, Users, Bot } from "lucide-react";
+import { PhoneMissed, Clock, Users } from "lucide-react";
 import wave15 from "@/assets/wave-15.png";
 
 export const WhyPilotExists = () => {
   const problems = [
     {
       icon: PhoneMissed,
-      title: "Missed Calls = Missed Revenue",
-      description: "Parents call when they can — often after work, during lunch, or in a rush. But orthodontic practices miss far more calls than they realize. And every missed call is a patient you may never speak to again.",
+      title: "Missed Calls (During + After Hours)",
+      stats: [
+        "Orthodontic practices miss 32–38% of inbound calls.",
+        "75% of callers who hit voicemail never call back.",
+        "Missing just one new patient call per day can approach $1M/year in lost potential production.",
+      ],
+      translation: "Every missed call is a start you may never recover.",
     },
     {
       icon: Clock,
-      title: "Slow Answer Times = Lost Patients",
-      description: "Most families don't wait. If your practice doesn't pick up fast, they call the next office on Google. Speed matters. Slow phones quietly drain revenue every single day.",
+      title: "Slow Answer Times",
+      stats: [
+        "Families won't wait.",
+        "If calls aren't answered fast, they hang up and book elsewhere.",
+        "Responding within 3 rings makes callers 21x more likely to convert.",
+        "Most practices can't hit that consistently—especially during peak hours.",
+      ],
+      translation: "Even answered calls become lost opportunities when the response is slow.",
     },
     {
       icon: Users,
-      title: "Front Desk Overload = Burnout",
-      description: "Your team is doing everything they can. But they're being pulled in every direction: check-ins, scheduling, emergencies, phones ringing nonstop, insurance questions. Even the best front desk staff can't be everywhere at once. When they're overwhelmed… patients feel the stress too.",
-    },
-    {
-      icon: Bot,
-      title: "The AI-Agent Shift Is Coming",
-      description: "Soon, parents will be able to book appointments straight from Google… without calling your office. Practices that aren't AI-ready will fall behind fast. Practices that prepare now will lead their markets. This shift is coming — faster than most realize.",
+      title: "Front-Desk Overload",
+      stats: [
+        "Your team is doing everything—checking in patients, managing schedules, handling emergencies, and answering nonstop calls.",
+        "63% of dental team members report frequent burnout",
+        "Front desk roles have the highest turnover",
+        "Each departure costs $10k–$70k+ in lost productivity",
+      ],
+      translation: "When your team is stretched thin, calls slip… and revenue slips with them.",
     },
   ];
 
@@ -41,12 +53,12 @@ export const WhyPilotExists = () => {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
-              The Four Silent Problems{" "}
+              The Three Silent Problems{" "}
               <span className="text-gradient">Hurting Ortho Practices</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {problems.map((problem, index) => (
               <Card key={index} className="border-border/50 hover:border-primary/30 transition-colors">
                 <CardHeader>
@@ -57,9 +69,14 @@ export const WhyPilotExists = () => {
                     <CardTitle className="text-xl">{problem.title}</CardTitle>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {problem.description}
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2 text-muted-foreground text-sm">
+                    {problem.stats.map((stat, i) => (
+                      <li key={i} className="leading-relaxed">{stat}</li>
+                    ))}
+                  </ul>
+                  <p className="text-primary font-semibold text-sm italic border-t border-border/50 pt-4">
+                    {problem.translation}
                   </p>
                 </CardContent>
               </Card>
