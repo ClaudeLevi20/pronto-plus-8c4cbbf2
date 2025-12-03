@@ -60,8 +60,8 @@ export const InterestSection = () => {
       }}
     >
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="space-y-16">
             <div 
               ref={headerRef}
               className={`text-center space-y-4 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -78,19 +78,27 @@ export const InterestSection = () => {
 
             <div 
               ref={benefitsRef}
-              className={`space-y-6 transition-all duration-700 delay-200 ${benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`space-y-8 transition-all duration-700 delay-200 ${benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
-              {benefits.map((benefit, index) => (
-                <div 
-                  key={index}
-                  className="p-6 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-full bg-primary/10 flex-shrink-0 mt-1">
-                      <Check className="h-5 w-5 text-primary" />
+              {benefits.map((benefit, index) => {
+                const isEven = index % 2 === 0;
+                return (
+                  <div 
+                    key={index}
+                    className={`flex flex-col md:flex-row items-center gap-8 ${isEven ? '' : 'md:flex-row-reverse'}`}
+                  >
+                    {/* Icon side */}
+                    <div className={`flex-shrink-0 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
+                      <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+                        <Check className="h-10 w-10 text-primary" />
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-semibold text-foreground">
+                    
+                    {/* Content side */}
+                    <div 
+                      className={`flex-1 p-6 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors text-center md:text-left ${isEven ? '' : 'md:text-right'}`}
+                    >
+                      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
                         {benefit.title}
                       </h3>
                       <div className="space-y-1 text-muted-foreground">
@@ -100,8 +108,8 @@ export const InterestSection = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div 
