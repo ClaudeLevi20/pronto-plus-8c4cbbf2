@@ -2,9 +2,53 @@ import { Check } from "lucide-react";
 import wave14 from "@/assets/wave-14.png";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
+const BenefitItem = ({ 
+  benefit, 
+  index 
+}: { 
+  benefit: { title: string; points: string[] }; 
+  index: number;
+}) => {
+  const { ref, isVisible } = useScrollReveal();
+  const isEven = index % 2 === 0;
+  
+  return (
+    <div 
+      ref={ref}
+      className={`flex flex-col md:flex-row items-center gap-8 transition-all duration-700 ${
+        isEven ? '' : 'md:flex-row-reverse'
+      } ${
+        isVisible 
+          ? 'opacity-100 translate-x-0' 
+          : `opacity-0 ${isEven ? '-translate-x-12' : 'translate-x-12'}`
+      }`}
+    >
+      {/* Icon side */}
+      <div className={`flex-shrink-0 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
+        <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+          <Check className="h-10 w-10 text-primary" />
+        </div>
+      </div>
+      
+      {/* Content side */}
+      <div 
+        className={`flex-1 p-6 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors text-center md:text-left ${isEven ? '' : 'md:text-right'}`}
+      >
+        <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
+          {benefit.title}
+        </h3>
+        <div className="space-y-1 text-muted-foreground">
+          {benefit.points.map((point, i) => (
+            <p key={i}>{point}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const InterestSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
-  const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollReveal();
   const { ref: closingRef, isVisible: closingVisible } = useScrollReveal();
 
   const benefits = [
@@ -76,45 +120,15 @@ export const InterestSection = () => {
               </p>
             </div>
 
-            <div 
-              ref={benefitsRef}
-              className={`space-y-8 transition-all duration-700 delay-200 ${benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-            >
-              {benefits.map((benefit, index) => {
-                const isEven = index % 2 === 0;
-                return (
-                  <div 
-                    key={index}
-                    className={`flex flex-col md:flex-row items-center gap-8 ${isEven ? '' : 'md:flex-row-reverse'}`}
-                  >
-                    {/* Icon side */}
-                    <div className={`flex-shrink-0 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-                        <Check className="h-10 w-10 text-primary" />
-                      </div>
-                    </div>
-                    
-                    {/* Content side */}
-                    <div 
-                      className={`flex-1 p-6 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors text-center md:text-left ${isEven ? '' : 'md:text-right'}`}
-                    >
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
-                        {benefit.title}
-                      </h3>
-                      <div className="space-y-1 text-muted-foreground">
-                        {benefit.points.map((point, i) => (
-                          <p key={i}>{point}</p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="space-y-8">
+              {benefits.map((benefit, index) => (
+                <BenefitItem key={index} benefit={benefit} index={index} />
+              ))}
             </div>
 
             <div 
               ref={closingRef}
-              className={`text-center pt-8 transition-all duration-700 delay-300 ${closingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`text-center pt-8 transition-all duration-700 ${closingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
               <p className="text-xl md:text-2xl text-foreground font-semibold max-w-3xl mx-auto">
                 There is a way to fix all three revenue leaks at once — with a tool built specifically for{" "}
