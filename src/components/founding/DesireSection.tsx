@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import foundingDashboard from "@/assets/founding-dashboard.jpg";
 import wave12 from "@/assets/wave-12.png";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface DesireSectionProps {
   onSignupClick: () => void;
 }
 
 export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
+  const { ref: contentRef, isVisible: contentVisible } = useScrollReveal();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
+
   return (
     <section 
       id="desire"
@@ -21,7 +25,10 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div 
+              ref={contentRef}
+              className={`space-y-6 transition-all duration-700 ${contentVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+            >
               <h2 className="text-3xl md:text-4xl font-bold">
                 Meet <span className="text-gradient">ProntoPlus</span>
               </h2>
@@ -53,7 +60,10 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
               </Button>
             </div>
             
-            <div>
+            <div 
+              ref={imageRef}
+              className={`transition-all duration-700 delay-200 ${imageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+            >
               <img 
                 src={foundingDashboard} 
                 alt="ProntoPlus dashboard" 
