@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import foundingDashboard from "@/assets/founding-dashboard.jpg";
+import wave12 from "@/assets/wave-12.png";
 
 interface DesireSectionProps {
   onSignupClick: () => void;
@@ -9,7 +10,13 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
   return (
     <section 
       id="desire"
-      className="py-24 bg-card/50 relative overflow-hidden"
+      className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-card/80"
+      style={{
+        backgroundImage: `url(${wave12})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
