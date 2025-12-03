@@ -23,7 +23,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
       <div className="absolute inset-0 z-0">
         <img 
           src={foundingHero} 
-          alt="AI-powered orthodontic receptionist" 
+          alt="Welcoming orthodontic reception area" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/90 to-background" />
@@ -38,23 +38,30 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Never Miss Another{" "}
-            <span className="text-gradient">Orthodontic Patient Call</span>{" "}
+            <span className="text-gradient">Patient Call</span>{" "}
             Again
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Join the Founding 100 and Get After-Hours AI Receptionist Coverage for <span className="text-primary font-bold">$1</span>
+            Become a Founding Member and Get After-Hours AI Receptionist Coverage for <span className="text-primary font-bold">$1</span>
           </p>
 
-          <div className="space-y-4">
-            <p className="text-lg text-foreground">
-              Premium AI receptionist designed exclusively for orthodontic practices.<br />
-              Answers every call. Books consults. Checks insurance. Handles emergencies.<br />
-              Works 24/7. Never gets tired. Never misses.
+          <div className="space-y-4 text-lg text-foreground">
+            <p>
+              Parents call when life is busy. Teens call after school. Emergencies happen at all hours.
             </p>
-            
-            <p className="text-xl font-semibold text-primary">
-              Only 100 practices will ever get this offer.
+            <p className="text-muted-foreground">
+              And every missed call, long wait time, or overwhelmed front desk leads to:
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-primary font-semibold">
+              <span>Lost starts</span>
+              <span>•</span>
+              <span>Stressed staff</span>
+              <span>•</span>
+              <span>Frustrated patients</span>
+            </div>
+            <p className="text-xl font-semibold pt-2">
+              ProntoPlus fixes all three.
             </p>
           </div>
 
@@ -68,15 +75,15 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
               onClick={onSignupClick}
               className="text-lg px-8 py-6"
             >
-              Reserve Your Founding Member Spot
+              Join the Founding 100 for $1
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              onClick={() => document.getElementById('benefits')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('problems')?.scrollIntoView({ behavior: 'smooth' })}
               className="text-lg px-8 py-6"
             >
-              See What's Included
+              See How It Works
             </Button>
           </div>
         </div>

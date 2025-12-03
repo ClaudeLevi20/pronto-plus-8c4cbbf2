@@ -1,32 +1,26 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { UserPlus, Zap, MessageSquare } from "lucide-react";
 import wave15 from "@/assets/wave-15.png";
 
 export const HowToJoin = () => {
   const steps = [
     {
+      icon: UserPlus,
       number: "1",
-      title: "Reserve Your Spot",
-      description: "Only the first 100 clinics are accepted.",
+      title: "Claim Your Spot",
+      description: "Only 100 clinics accepted.",
     },
     {
+      icon: Zap,
       number: "2",
       title: "Activate ProntoPlus",
-      description: "Turn on your after-hours receptionist with just a few clicks.",
+      description: "Takes just minutes — no IT needed.",
     },
     {
+      icon: MessageSquare,
       number: "3",
-      title: "Complete Your 30-Day Trial",
-      description: "Use all three AI agents with full access.",
-    },
-    {
-      number: "4",
-      title: "Join Quick Check-In Calls",
-      description: "Attend at least two of three short calls so we can support your setup and gather feedback.",
-    },
-    {
-      number: "5",
-      title: "Unlock Lifetime Benefits",
-      description: "Keep after-hours free and receive Founders-only pricing options.",
+      title: "Attend Your Check-In Calls",
+      description: "Meet us at least twice and share your feedback. You help shape the future of ortho communication.",
     },
   ];
 
@@ -44,24 +38,32 @@ export const HowToJoin = () => {
         <div className="max-w-5xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Becoming a Founding Member Is <span className="text-gradient">Simple</span>
+              How to <span className="text-gradient">Join the Pilot</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step) => (
-              <Card key={step.number} className="text-center border-border/50">
+              <Card key={step.number} className="text-center border-border/50 hover:border-primary/30 transition-colors">
                 <CardHeader>
-                  <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center text-3xl font-bold text-primary mx-auto mb-4">
-                    {step.number}
+                  <div className="w-20 h-20 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mx-auto mb-4">
+                    <step.icon className="h-10 w-10 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">{step.title}</CardTitle>
+                  <div className="text-sm text-primary font-semibold mb-2">Step {step.number}</div>
+                  <CardTitle className="text-xl">{step.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>{step.description}</CardDescription>
+                  <CardDescription className="text-base">{step.description}</CardDescription>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="text-center pt-8">
+            <p className="text-xl text-foreground font-semibold">
+              Once complete →{" "}
+              <span className="text-primary">Your after-hours AI receptionist stays free for life.</span>
+            </p>
           </div>
         </div>
       </div>

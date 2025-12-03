@@ -23,18 +23,23 @@ export const FoundingCTA = ({ onSignupClick }: FoundingCTAProps) => {
             <div>
               <img 
                 src={foundingOrthodontist} 
-                alt="Confident orthodontist" 
+                alt="Friendly orthodontist team at front desk" 
                 className="rounded-lg shadow-2xl"
               />
             </div>
             
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold">
-                Become a <span className="text-gradient">Founding Member</span> for $1
+                Become Part of the{" "}
+                <span className="text-gradient">Founding 100</span>
               </h2>
               
               <p className="text-xl text-muted-foreground">
-                Try ProntoPlus for 30 days. Help shape the future of ortho AI. Unlock benefits for life.
+                Try ProntoPlus. Reduce stress. Improve patient experience. Protect your revenue.
+              </p>
+
+              <p className="text-lg text-foreground">
+                This is your chance to get in early — before the shift — and lock in lifetime benefits.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -43,7 +48,7 @@ export const FoundingCTA = ({ onSignupClick }: FoundingCTAProps) => {
                   onClick={onSignupClick}
                   className="text-lg px-8 py-6"
                 >
-                  Claim Your Spot
+                  Join the Founding 100 for $1
                 </Button>
                 <Button 
                   size="lg" 
@@ -51,7 +56,7 @@ export const FoundingCTA = ({ onSignupClick }: FoundingCTAProps) => {
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="text-lg px-8 py-6"
                 >
-                  Learn More About ProntoPlus
+                  Talk to Our Team
                 </Button>
               </div>
             </div>

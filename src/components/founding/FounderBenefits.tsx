@@ -1,6 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Clock, Zap, Lock, HeadphonesIcon } from "lucide-react";
+import { Check } from "lucide-react";
 import foundingDashboard from "@/assets/founding-dashboard.jpg";
 import wave14 from "@/assets/wave-14.png";
 
@@ -9,6 +8,18 @@ interface FounderBenefitsProps {
 }
 
 export const FounderBenefits = ({ onSignupClick }: FounderBenefitsProps) => {
+  const benefits = [
+    "Answer every call instantly",
+    "Help every parent within seconds",
+    "Give your team breathing room",
+    "Provide warm, human-like service 24/7",
+    "Handle emergencies with confidence",
+    "Check insurance benefits on the call",
+    "Book appointments automatically",
+    "Never stress about staffing shortages again",
+    "And be ready for the new AI booking world",
+  ];
+
   return (
     <section 
       id="benefits"
@@ -22,106 +33,76 @@ export const FounderBenefits = ({ onSignupClick }: FounderBenefitsProps) => {
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
+          {/* What If Section */}
+          <div className="text-center space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Founding Member <span className="text-gradient">Benefits</span>
+              What If Every One of Those Problems{" "}
+              <span className="text-gradient">Disappeared?</span>
             </h2>
-            <p className="text-xl text-muted-foreground">What you get for just $1</p>
+            
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              What if your practice could:
+            </p>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {benefits.map((benefit, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-3 text-left p-4 rounded-lg bg-card/50 border border-border/50"
+                >
+                  <Check className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">{benefit}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xl text-muted-foreground pt-4">
+              What if all of that worked together…<br />
+              <span className="text-foreground font-semibold">seamlessly, reliably, and with zero extra effort from your team?</span>
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-primary/50">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <Clock className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">After-Hours AI Receptionist — Free for Life*</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Your practice never misses an after-hours call again. Evenings, weekends, holidays — always covered.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground italic">
-                  *Free for as long as the practice keeps an active ProntoPlus account. If pilot steps aren't completed, after-hours remains free for one full year.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <Zap className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">Full 30-Day Access to Complete Suite</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Try every agent inside ProntoPlus with full 24/7 usage during the entire pilot.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div>
-                  <p className="font-semibold">Receptionist Agent</p>
-                  <p className="text-sm text-muted-foreground">Handles all inbound conversations with human-like warmth.</p>
-                </div>
-                <div>
-                  <p className="font-semibold">Booking Agent</p>
-                  <p className="text-sm text-muted-foreground">Schedules consults directly into your PMS.</p>
-                </div>
-                <div>
-                  <p className="font-semibold">Insurance Agent</p>
-                  <p className="text-sm text-muted-foreground">Checks benefits, explains coverage, and guides parents with clarity.</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <Lock className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">Grandfathered "Founders Only" Pricing</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  A locked-in rate for full ProntoPlus that never increases. Exclusive access to pricing the public will never see again.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="bg-muted p-4 rounded-lg space-y-2">
-                  <p className="text-sm font-semibold text-muted-foreground">Post-pilot public pricing:</p>
-                  <p className="text-lg">After-Hours Only: <span className="font-bold">$499/month</span></p>
-                  <p className="text-lg">Full 24/7 Coverage: <span className="font-bold">$699/month</span></p>
-                </div>
-                <p className="text-primary font-semibold">
-                  Founders receive preferred pricing that remains fixed for life.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <HeadphonesIcon className="h-8 w-8 text-primary" />
-                  <CardTitle className="text-2xl">Priority Support + Founding Status</CardTitle>
-                </div>
-                <CardDescription className="text-base">
-                  Direct access to onboarding, calibration, and feedback calls.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-foreground">
-                  Plus, a permanent badge that marks your clinic as part of the original 100 inside the platform.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center">
-            <img 
-              src={foundingDashboard} 
-              alt="ProntoPlus dashboard" 
-              className="rounded-lg shadow-2xl mx-auto mb-8"
-            />
-            <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
-              Join the Founding 100 for $1
-            </Button>
+          {/* Meet ProntoPlus Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center pt-8">
+            <div className="space-y-6">
+              <h3 className="text-3xl md:text-4xl font-bold">
+                Meet <span className="text-gradient">ProntoPlus</span>
+              </h3>
+              <p className="text-xl text-muted-foreground">
+                The Ortho-First AI Receptionist That Supports Your Team
+              </p>
+              <p className="text-lg text-foreground">
+                ProntoPlus was built only for orthodontic practices. Not general dentistry. Not medical. Just ortho.
+              </p>
+              <p className="text-muted-foreground">
+                It understands:
+              </p>
+              <div className="grid grid-cols-2 gap-2 text-muted-foreground">
+                <span>• Consult workflows</span>
+                <span>• Phase 1 vs Phase 2</span>
+                <span>• Emergencies</span>
+                <span>• Aligner concerns</span>
+                <span>• Braces issues</span>
+                <span>• Parent questions</span>
+                <span>• Teen communication</span>
+                <span>• Scheduling rules unique to ortho</span>
+                <span className="col-span-2">• Insurance coverage that matters in ortho</span>
+              </div>
+              <p className="text-lg font-semibold text-primary pt-4">
+                This is AI that actually helps your team — not replaces them.
+              </p>
+              <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
+                Join the Founding 100 for $1
+              </Button>
+            </div>
+            
+            <div>
+              <img 
+                src={foundingDashboard} 
+                alt="ProntoPlus dashboard" 
+                className="rounded-lg shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </div>
