@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check, Phone, Calendar, Shield, Zap, Users, Settings } from "lucide-react";
-import foundingDashboard from "@/assets/founding-dashboard.jpg";
+import { Phone, Calendar, Shield, Zap, Users, Settings, Clock, CheckCircle } from "lucide-react";
 import wave12 from "@/assets/wave-12.png";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
@@ -9,7 +8,6 @@ interface DesireSectionProps {
 }
 
 export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
-  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const { ref: gridRef, isVisible: gridVisible } = useScrollReveal();
   const { ref: resultRef, isVisible: resultVisible } = useScrollReveal();
 
@@ -26,145 +24,147 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-12">
-          {/* Header */}
-          <div 
-            ref={headerRef}
-            className={`text-center space-y-4 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Meet <span className="text-gradient">Pronto+</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              The AI Receptionist Built Only for Orthodontists
-            </p>
-          </div>
-
+          
           {/* Bento Grid */}
           <div 
             ref={gridRef}
-            className={`grid grid-cols-1 md:grid-cols-6 gap-4 transition-all duration-700 delay-100 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            {/* Main intro - spans 4 cols */}
-            <div className="md:col-span-4 p-8 rounded-2xl bg-card/70 border border-border/50 hover:border-primary/30 transition-all">
-              <p className="text-xl text-foreground leading-relaxed">
-                Pronto+ solves the <span className="text-primary font-semibold">three biggest revenue leaks</span> in ortho practices with one simple, supportive system.
-              </p>
+            {/* Row 1 */}
+            {/* Ortho-First */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
+              <Zap className="h-8 w-8 text-primary mb-3" />
+              <p className="text-xs text-muted-foreground">Built for</p>
+              <p className="text-lg font-bold text-foreground">Orthodontics</p>
+              <p className="text-xs text-muted-foreground mt-1">Only</p>
             </div>
 
-            {/* Dashboard image - spans 2 cols, 2 rows */}
-            <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 transition-all">
-              <img 
-                src={foundingDashboard} 
-                alt="Pronto+ dashboard" 
-                className="w-full h-full object-cover"
-              />
+            {/* 24/7 */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
+              <p className="text-xs text-muted-foreground">Available</p>
+              <p className="text-3xl md:text-4xl font-bold text-gradient">24/7</p>
+              <p className="text-xs text-muted-foreground">Coverage</p>
             </div>
 
-            {/* Ortho-First Intelligence - spans 2 cols */}
-            <div className="md:col-span-2 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all group">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
-                  <Zap className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground">Ortho-First Intelligence</h3>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Not generic dental AI. Understands braces, aligners, Phase 1 vs. Phase 2, emergencies, and parent/teen questions.
-              </p>
+            {/* No missed calls */}
+            <div className="col-span-1 p-5 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
+              <p className="text-primary text-2xl md:text-3xl font-bold">0</p>
+              <p className="text-sm text-foreground font-medium">Missed Calls</p>
+              <p className="text-xs text-muted-foreground">Ever again</p>
             </div>
 
-            {/* Supports Your Team - spans 2 cols */}
-            <div className="md:col-span-2 p-6 rounded-2xl bg-card/70 border border-border/50 hover:border-primary/30 transition-all group">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Users className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground">Supports Your Team</h3>
-              </div>
-              <p className="text-muted-foreground text-sm mb-3">
-                Handles repetitive work so your front desk can focus on people:
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Calls", "FAQs", "Triage", "Insurance", "Scheduling"].map((item) => (
-                  <span key={item} className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary">
-                    {item}
-                  </span>
+            {/* Set up time */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
+              <Clock className="h-6 w-6 text-muted-foreground mb-2" />
+              <p className="text-xs text-muted-foreground">Set up in</p>
+              <p className="text-2xl font-bold text-foreground">Minutes</p>
+            </div>
+
+            {/* No IT */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
+              <Settings className="h-6 w-6 text-muted-foreground mb-2" />
+              <p className="text-sm font-medium text-foreground">No IT</p>
+              <p className="text-xs text-muted-foreground">No hardware</p>
+            </div>
+
+            {/* Row 2 */}
+            {/* Understands */}
+            <div className="col-span-1 md:row-span-2 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
+              <p className="text-xs text-muted-foreground mb-3">Understands</p>
+              <div className="space-y-2">
+                {["Braces", "Aligners", "Phase 1 & 2", "Emergencies", "Parent Qs"].map((item) => (
+                  <p key={item} className="text-sm text-foreground">{item}</p>
                 ))}
               </div>
             </div>
 
-            {/* Set Up in Minutes - spans 2 cols */}
-            <div className="md:col-span-2 p-6 rounded-2xl bg-card/70 border border-border/50 hover:border-primary/30 transition-all group">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Settings className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground">Set Up in Minutes</h3>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                No IT. No hardware. You control the tone, the rules, and when calls hand off to humans.
-              </p>
-            </div>
-
-            {/* Three Agents - spans full width */}
-            <div className="md:col-span-6 p-6 rounded-2xl bg-card/70 border border-border/50">
-              <h3 className="text-lg font-semibold text-foreground mb-6 text-center">
-                Three Specialized Agents Working Together
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-border/30 hover:border-primary/30 transition-all">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Receptionist Agent</h4>
-                    <p className="text-sm text-muted-foreground">Answers instantly & guides patients</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-border/30 hover:border-primary/30 transition-all">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <Calendar className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Booking Agent</h4>
-                    <p className="text-sm text-muted-foreground">Schedules consults & follow-ups</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-border/30 hover:border-primary/30 transition-all">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <Shield className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">Insurance Agent</h4>
-                    <p className="text-sm text-muted-foreground">Checks benefits & explains coverage</p>
-                  </div>
-                </div>
-              </div>
-              <p className="text-center text-muted-foreground mt-6 text-sm">
-                All seamless. All 24/7. <span className="text-primary font-medium">All designed for ortho.</span>
-              </p>
-            </div>
-
-            {/* The Result - spans 3 cols */}
-            <div className="md:col-span-3 p-6 rounded-2xl bg-gradient-to-br from-card/90 to-card/70 border border-primary/20">
-              <h3 className="text-xl font-bold text-foreground mb-4">The Result</h3>
-              <div className="space-y-2">
-                <p className="text-muted-foreground">✓ A calmer team</p>
-                <p className="text-muted-foreground">✓ Happier patients</p>
-                <p className="text-muted-foreground">✓ Fewer lost starts</p>
-                <p className="text-primary font-semibold">✓ More predictable growth</p>
+            {/* CENTER - Meet Pronto+ */}
+            <div className="col-span-2 md:col-span-3 row-span-2 p-8 rounded-3xl bg-gradient-to-br from-card via-card/90 to-card/80 border-2 border-primary/30 hover:border-primary/50 transition-all flex flex-col justify-center items-center text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
+              <div className="relative z-10">
+                <p className="text-sm text-muted-foreground mb-2">Introducing</p>
+                <h2 className="text-4xl md:text-6xl font-bold mb-2">
+                  <span className="text-gradient">Pronto+</span>
+                </h2>
+                <p className="text-lg md:text-xl text-foreground font-medium mb-4">
+                  AI Receptionist
+                </p>
+                <p className="text-sm text-muted-foreground max-w-sm">
+                  Solves the three biggest revenue leaks in ortho practices with one simple system
+                </p>
               </div>
             </div>
 
-            {/* CTA - spans 3 cols */}
-            <div className="md:col-span-3 p-6 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 flex flex-col justify-center items-center text-center">
-              <p className="text-foreground font-medium mb-4">
-                For a limited time, <span className="text-gradient font-bold">100 practices</span> can access Pronto+ in a way that will never be offered again.
-              </p>
-              <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
-                Join the Founding 100 for $1
-              </Button>
+            {/* Supports team */}
+            <div className="col-span-1 md:row-span-2 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-between">
+              <Users className="h-8 w-8 text-primary" />
+              <div className="mt-auto">
+                <p className="text-lg font-bold text-foreground">Supports</p>
+                <p className="text-sm text-muted-foreground">Your Team</p>
+                <p className="text-xs text-muted-foreground mt-2">Not replaces them</p>
+              </div>
             </div>
+
+            {/* Row 3 - Agents */}
+            {/* Receptionist Agent */}
+            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
+              <Phone className="h-6 w-6 text-primary mb-2" />
+              <p className="text-sm font-semibold text-foreground">Receptionist</p>
+              <p className="text-xs text-muted-foreground">Agent</p>
+            </div>
+
+            {/* Booking Agent */}
+            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
+              <Calendar className="h-6 w-6 text-primary mb-2" />
+              <p className="text-sm font-semibold text-foreground">Booking</p>
+              <p className="text-xs text-muted-foreground">Agent</p>
+            </div>
+
+            {/* Insurance Agent */}
+            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
+              <Shield className="h-6 w-6 text-primary mb-2" />
+              <p className="text-sm font-semibold text-foreground">Insurance</p>
+              <p className="text-xs text-muted-foreground">Agent</p>
+            </div>
+
+            {/* Row 4 */}
+            {/* Calmer team */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
+              <CheckCircle className="h-5 w-5 text-primary mb-2" />
+              <p className="text-sm font-medium text-foreground">Calmer Team</p>
+            </div>
+
+            {/* Happier patients */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
+              <CheckCircle className="h-5 w-5 text-primary mb-2" />
+              <p className="text-sm font-medium text-foreground">Happier Patients</p>
+            </div>
+
+            {/* The Result - spans 2 */}
+            <div className="col-span-2 p-5 rounded-2xl bg-gradient-to-r from-primary/15 to-primary/5 border border-primary/20 flex flex-col justify-center items-center text-center">
+              <p className="text-xs text-muted-foreground">The Result</p>
+              <p className="text-xl md:text-2xl font-bold text-gradient">Predictable Growth</p>
+              <p className="text-xs text-muted-foreground">Fewer lost starts</p>
+            </div>
+
+            {/* All designed for ortho */}
+            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
+              <p className="text-xs text-muted-foreground">All designed for</p>
+              <p className="text-lg font-bold text-primary">Ortho</p>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div 
+            ref={resultRef}
+            className={`text-center space-y-6 transition-all duration-700 delay-200 ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <p className="text-xl md:text-2xl text-foreground font-semibold max-w-3xl mx-auto">
+              For a limited time, <span className="text-gradient">100 practices</span> can access Pronto+ in a way that will never be offered again.
+            </p>
+            <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
+              Join the Founding 100 for $1
+            </Button>
           </div>
         </div>
       </div>
