@@ -70,7 +70,7 @@ export const WhyPilotExists = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <ul className="space-y-2 text-muted-foreground text-sm">
+                  <ul className="space-y-2 text-muted-foreground text-sm list-disc list-inside">
                     {problem.stats.map((stat, i) => (
                       <li key={i} className="leading-relaxed">{stat}</li>
                     ))}
