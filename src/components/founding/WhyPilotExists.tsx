@@ -7,19 +7,19 @@ const highlightStats = (text: string) => {
   const pattern = /(\d+–?\d*%|\$[\d,]+[kKmM]?(?:\/year)?(?:–\$[\d,]+[kKmM]?\+?)?|\d+x|\d+ rings?)/g;
   
   const parts = text.split(pattern);
-  const matches = text.match(pattern) || [];
   
-  return parts.reduce((acc: (string | JSX.Element)[], part, index) => {
-    acc.push(part);
-    if (matches[index]) {
-      acc.push(
+  return parts.map((part, index) => {
+    // Check if this part matches the pattern (odd indices after split with capturing group)
+    if (pattern.test(part)) {
+      pattern.lastIndex = 0; // Reset regex state
+      return (
         <span key={index} className="text-primary font-semibold">
-          {matches[index]}
+          {part}
         </span>
       );
     }
-    return acc;
-  }, []);
+    return part;
+  });
 };
 
 export const WhyPilotExists = () => {
