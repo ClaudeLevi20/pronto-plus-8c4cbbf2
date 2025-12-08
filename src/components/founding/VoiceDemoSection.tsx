@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, PhoneOff, Volume2, VolumeX, Mic, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: number;
@@ -277,15 +278,28 @@ export const VoiceDemoSection = () => {
     isSpeaking.current = false;
   }, [clearAllTimeouts]);
 
+  const { toast } = useToast();
+
   const toggleMute = useCallback(() => {
     setIsMuted(prev => {
-      if (!prev) {
-        // When muting, cancel current speech
+      const newMuted = !prev;
+      if (newMuted) {
         speechSynthesis.cancel();
+        toast({
+          title: "Audio Muted",
+          description: "Voice playback is now muted",
+          duration: 2000,
+        });
+      } else {
+        toast({
+          title: "Audio Unmuted",
+          description: "Voice playback is now enabled",
+          duration: 2000,
+        });
       }
-      return !prev;
+      return newMuted;
     });
-  }, []);
+  }, [toast]);
 
   // Auto-start when section scrolls into view
   useEffect(() => {
