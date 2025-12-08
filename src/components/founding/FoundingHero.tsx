@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
+import { VoiceDemoModal } from "./VoiceDemoModal";
 import foundingHero from "@/assets/founding-hero.jpg";
 import wave14 from "@/assets/wave-14.png";
 
@@ -9,6 +11,8 @@ interface FoundingHeroProps {
 }
 
 export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
+
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -61,7 +65,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
             <Button 
               size="lg" 
               variant="outline"
-              onClick={() => document.getElementById('problems')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setIsDemoOpen(true)}
               className="text-lg px-8 py-6"
             >
               See How Pronto+ Works
@@ -69,6 +73,8 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           </div>
         </div>
       </div>
+
+      <VoiceDemoModal open={isDemoOpen} onOpenChange={setIsDemoOpen} />
     </section>
   );
 };
