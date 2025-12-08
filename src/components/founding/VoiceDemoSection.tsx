@@ -120,7 +120,10 @@ export const VoiceDemoSection = () => {
   const [prontoVoice, setProntoVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [patientVoice, setPatientVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [isComplete, setIsComplete] = useState(false);
+  const [hasAutoStarted, setHasAutoStarted] = useState(false);
+  const [voicesReady, setVoicesReady] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const currentMessageIndex = useRef(0);
   const isSpeaking = useRef(false);
 
@@ -155,6 +158,7 @@ export const VoiceDemoSection = () => {
 
       setProntoVoice(femaleVoices[0] || voices.find(v => v.lang.startsWith('en')) || voices[0]);
       setPatientVoice(maleVoices[0] || voices.find(v => v.lang.startsWith('en') && v !== femaleVoices[0]) || voices[1] || voices[0]);
+      setVoicesReady(true);
     };
 
     initVoices();
@@ -237,19 +241,48 @@ export const VoiceDemoSection = () => {
     }, 500);
   }, [processNextMessage]);
 
-  const endCall = () => {
+  const endCall = useCallback(() => {
     speechSynthesis.cancel();
     setIsCallActive(false);
     setCurrentSpeaker(null);
+    setIsTyping(false);
     isSpeaking.current = false;
-  };
+  }, []);
 
-  const toggleMute = () => {
-    if (!isMuted) {
-      speechSynthesis.cancel();
+  const toggleMute = useCallback(() => {
+    setIsMuted(prev => {
+      if (!prev) {
+        speechSynthesis.cancel();
+      }
+      return !prev;
+    });
+  }, []);
+
+  // Auto-start when section scrolls into view
+  useEffect(() => {
+    if (!voicesReady || hasAutoStarted) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAutoStarted && !isCallActive && !isComplete) {
+            setHasAutoStarted(true);
+            // Small delay before starting
+            setTimeout(() => {
+              startCall();
+            }, 800);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-    setIsMuted(!isMuted);
-  };
+
+    return () => observer.disconnect();
+  }, [voicesReady, hasAutoStarted, isCallActive, isComplete, startCall]);
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -258,7 +291,7 @@ export const VoiceDemoSection = () => {
   };
 
   return (
-    <section className="relative -mt-32 z-20 pb-16">
+    <section ref={sectionRef} className="relative -mt-32 z-20 pb-16">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="bg-card rounded-3xl shadow-2xl border overflow-hidden">
