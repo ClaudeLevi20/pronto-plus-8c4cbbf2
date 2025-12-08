@@ -126,6 +126,8 @@ export const VoiceDemoSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const currentMessageIndex = useRef(0);
   const isSpeaking = useRef(false);
+  const isAborted = useRef(false);
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -175,10 +177,15 @@ export const VoiceDemoSection = () => {
   }, [isCallActive]);
 
   const speakMessage = useCallback((message: Message, onEnd: () => void) => {
+    if (isAborted.current) return;
+    
     if (isMuted) {
       const wordCount = message.text.split(' ').length;
       const duration = Math.max(1500, wordCount * 200);
-      setTimeout(onEnd, duration);
+      const timeoutId = setTimeout(() => {
+        if (!isAborted.current) onEnd();
+      }, duration);
+      timeoutRefs.current.push(timeoutId);
       return;
     }
 
@@ -189,17 +196,19 @@ export const VoiceDemoSection = () => {
     utterance.volume = 1;
 
     utterance.onend = () => {
-      onEnd();
+      if (!isAborted.current) onEnd();
     };
 
     utterance.onerror = () => {
-      onEnd();
+      if (!isAborted.current) onEnd();
     };
 
     speechSynthesis.speak(utterance);
   }, [isMuted, prontoVoice, patientVoice]);
 
   const processNextMessage = useCallback(() => {
+    if (isAborted.current) return;
+    
     if (currentMessageIndex.current >= conversation.length) {
       setIsCallActive(false);
       setCurrentSpeaker(null);
@@ -214,21 +223,35 @@ export const VoiceDemoSection = () => {
     setIsTyping(true);
     setCurrentSpeaker(message.role);
 
-    setTimeout(() => {
+    const typingTimeout = setTimeout(() => {
+      if (isAborted.current) return;
+      
       setIsTyping(false);
       setVisibleMessages(prev => [...prev, message]);
       
       speakMessage(message, () => {
-        setTimeout(() => {
+        if (isAborted.current) return;
+        
+        const nextTimeout = setTimeout(() => {
+          if (isAborted.current) return;
           currentMessageIndex.current += 1;
           processNextMessage();
         }, 500);
+        timeoutRefs.current.push(nextTimeout);
       });
     }, 800);
+    timeoutRefs.current.push(typingTimeout);
   }, [speakMessage]);
 
+  const clearAllTimeouts = useCallback(() => {
+    timeoutRefs.current.forEach(id => clearTimeout(id));
+    timeoutRefs.current = [];
+  }, []);
+
   const startCall = useCallback(() => {
+    clearAllTimeouts();
     speechSynthesis.cancel();
+    isAborted.current = false;
     setIsCallActive(true);
     setVisibleMessages([]);
     setCallDuration(0);
@@ -236,22 +259,28 @@ export const VoiceDemoSection = () => {
     currentMessageIndex.current = 0;
     isSpeaking.current = false;
 
-    setTimeout(() => {
-      processNextMessage();
+    const startTimeout = setTimeout(() => {
+      if (!isAborted.current) {
+        processNextMessage();
+      }
     }, 500);
-  }, [processNextMessage]);
+    timeoutRefs.current.push(startTimeout);
+  }, [processNextMessage, clearAllTimeouts]);
 
   const endCall = useCallback(() => {
+    isAborted.current = true;
+    clearAllTimeouts();
     speechSynthesis.cancel();
     setIsCallActive(false);
     setCurrentSpeaker(null);
     setIsTyping(false);
     isSpeaking.current = false;
-  }, []);
+  }, [clearAllTimeouts]);
 
   const toggleMute = useCallback(() => {
     setIsMuted(prev => {
       if (!prev) {
+        // When muting, cancel current speech
         speechSynthesis.cancel();
       }
       return !prev;
