@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Phone, PhoneOff, Volume2, VolumeX, Mic, RotateCcw } from "lucide-react";
+import { Phone, PhoneOff, Volume2, Mic, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: number;
@@ -117,7 +116,6 @@ export const VoiceDemoSection = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [currentSpeaker, setCurrentSpeaker] = useState<"pronto" | "patient" | null>(null);
   const [callDuration, setCallDuration] = useState(0);
-  const [isMuted, setIsMuted] = useState(false);
   const [prontoVoice, setProntoVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [patientVoice, setPatientVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [isComplete, setIsComplete] = useState(false);
@@ -179,16 +177,6 @@ export const VoiceDemoSection = () => {
 
   const speakMessage = useCallback((message: Message, onEnd: () => void) => {
     if (isAborted.current) return;
-    
-    if (isMuted) {
-      const wordCount = message.text.split(' ').length;
-      const duration = Math.max(1500, wordCount * 200);
-      const timeoutId = setTimeout(() => {
-        if (!isAborted.current) onEnd();
-      }, duration);
-      timeoutRefs.current.push(timeoutId);
-      return;
-    }
 
     const utterance = new SpeechSynthesisUtterance(message.text);
     utterance.voice = message.role === "pronto" ? prontoVoice : patientVoice;
@@ -205,7 +193,7 @@ export const VoiceDemoSection = () => {
     };
 
     speechSynthesis.speak(utterance);
-  }, [isMuted, prontoVoice, patientVoice]);
+  }, [prontoVoice, patientVoice]);
 
   const processNextMessage = useCallback(() => {
     if (isAborted.current) return;
@@ -277,29 +265,6 @@ export const VoiceDemoSection = () => {
     setIsTyping(false);
     isSpeaking.current = false;
   }, [clearAllTimeouts]);
-
-  const { toast } = useToast();
-
-  const toggleMute = useCallback(() => {
-    setIsMuted(prev => {
-      const newMuted = !prev;
-      if (newMuted) {
-        speechSynthesis.cancel();
-        toast({
-          title: "Audio Muted",
-          description: "Voice playback is now muted",
-          duration: 2000,
-        });
-      } else {
-        toast({
-          title: "Audio Unmuted",
-          description: "Voice playback is now enabled",
-          duration: 2000,
-        });
-      }
-      return newMuted;
-    });
-  }, [toast]);
 
   // Auto-start when section scrolls into view
   useEffect(() => {
@@ -451,26 +416,15 @@ export const VoiceDemoSection = () => {
                     </Button>
                   </>
                 ) : (
-                  <>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      onClick={toggleMute}
-                      className="gap-2"
-                    >
-                      {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                      {isMuted ? "Unmute" : "Mute"}
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="destructive"
-                      onClick={endCall}
-                      className="gap-2 px-6"
-                    >
-                      <PhoneOff className="w-5 h-5" />
-                      End Call
-                    </Button>
-                  </>
+                  <Button
+                    size="lg"
+                    variant="destructive"
+                    onClick={endCall}
+                    className="gap-2 px-6"
+                  >
+                    <PhoneOff className="w-5 h-5" />
+                    End Call
+                  </Button>
                 )}
               </div>
               
