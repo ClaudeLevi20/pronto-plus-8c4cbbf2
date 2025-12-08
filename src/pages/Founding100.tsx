@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FoundingHero } from "@/components/founding/FoundingHero";
+import { VoiceDemoSection } from "@/components/founding/VoiceDemoSection";
 import { WhyPilotExists } from "@/components/founding/WhyPilotExists";
 import { InterestSection } from "@/components/founding/InterestSection";
 import { DesireSection } from "@/components/founding/DesireSection";
@@ -21,6 +22,7 @@ const Founding100 = () => {
       <Navbar />
       <main>
         <FoundingHero onSignupClick={() => setIsSignupModalOpen(true)} />
+        <VoiceDemoSection />
         <WhyPilotExists />
         <InterestSection />
         <DesireSection onSignupClick={() => setIsSignupModalOpen(true)} />
