@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
+import { VoiceDemoCard } from "./VoiceDemoCard";
 import foundingHero from "@/assets/founding-hero.jpg";
 import wave14 from "@/assets/wave-14.png";
 
@@ -11,7 +12,7 @@ interface FoundingHeroProps {
 export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pb-40"
+      className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         backgroundImage: `url(${wave14})`,
         backgroundSize: "cover",
@@ -26,30 +27,38 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <Badge variant="outline" className="border-primary text-primary px-6 py-2 text-sm font-semibold">
-            FOUNDING 100
-          </Badge>
+      <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="space-y-6 text-center lg:text-left">
+            <Badge variant="outline" className="border-primary text-primary px-6 py-2 text-sm font-semibold">
+              FOUNDING 100
+            </Badge>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            How To Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
-            Practice
-          </h1>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              How To Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
+              Practice
+            </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            The first AI Receptionist trained specifically for orthodontics. It answers, books, and verifies
-            insurance—so you never miss a patient again.
-          </p>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
+              The first AI Receptionist trained specifically for orthodontics. It answers, books, and verifies
+              insurance—so you never miss a patient again.
+            </p>
 
-          <div className="flex justify-center pt-4">
-            <CountdownTimer className="max-w-2xl w-full" />
+            <div className="pt-2">
+              <CountdownTimer className="max-w-xl mx-auto lg:mx-0" />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+              <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
+                Join the Founders Cohort for $1
+              </Button>
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
-              Join the Founders Cohort for $1
-            </Button>
+          {/* Right Column - Demo */}
+          <div className="lg:pl-4">
+            <VoiceDemoCard />
           </div>
         </div>
       </div>
