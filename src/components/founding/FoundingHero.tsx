@@ -10,22 +10,18 @@ interface FoundingHeroProps {
 
 export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden pb-40"
       style={{
         backgroundImage: `url(${wave14})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={foundingHero} 
-          alt="Welcoming orthodontic reception area" 
-          className="w-full h-full object-cover"
-        />
+        <img src={foundingHero} alt="Welcoming orthodontic reception area" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/90 to-background" />
       </div>
 
@@ -35,15 +31,15 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           <Badge variant="outline" className="border-primary text-primary px-6 py-2 text-sm font-semibold">
             FOUNDING 100
           </Badge>
-          
+
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            3 Reasons Orthodontic Practices Lose Over{" "}
-            <span className="text-gradient">$330k/Year</span>{" "}
-            — and the $1 Tool That Fixes All Three
+            How To Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
+            Practice
           </h1>
-          
+
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Missed calls, slow response times, and front-desk overload quietly drain hundreds of thousands from even the best practices. Pronto+ addresses all these challenges—protecting your revenue, easing your team's workload, and giving patients a smoother experience.
+            The first AI Receptionist trained specifically for orthodontics. It answers, books, and verifies
+            insurance—so you never miss a patient again.
           </p>
 
           <div className="flex justify-center pt-4">
@@ -51,11 +47,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button 
-              size="lg" 
-              onClick={onSignupClick}
-              className="text-lg px-8 py-6"
-            >
+            <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
               Join the Founders Cohort for $1
             </Button>
           </div>
