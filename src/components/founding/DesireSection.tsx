@@ -53,87 +53,90 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
       className="py-24 relative overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto space-y-12">
-          
-          {/* Header */}
-          <div 
-            ref={headerRef}
-            className={`text-center mb-12 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-              The #1 AI Receptionist For Orthodontic Offices.
-            </h2>
-          </div>
-
-          {/* Bento Grid */}
+        <div className="max-w-6xl mx-auto">
+          {/* Bento Grid - Apple M2 Max style with center hero */}
           <div 
             ref={gridRef}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-4 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Row 1 */}
             <BentoCard 
               icon={Phone}
               title="Never Misses a Call"
-              description="100% uptime. Whether covering after-hours or 24/7, Pronto+ answers every single inbound call."
+              description="100% uptime. Answers every inbound call."
             />
             <BentoCard 
               icon={Zap}
               title="Instant Response"
-              description="Zero wait times. Patients hear a warm voice on ring one, every time."
+              description="Zero wait times on ring one."
               featured
             />
             <BentoCard 
               icon={Brain}
               title="Ortho IQ"
-              description="Trained on real orthodontic workflows. Understands Phase 1, Invisalign, treatment plans, emergency protocols."
-            />
-
-            {/* Row 2 */}
-            <BentoCard 
-              icon={ArrowRightLeft}
-              title="Seamless Handoff"
-              description="When a call needs a human touch, the transition is warm and context-aware. Your staff knows exactly what to do."
-            />
-            <BentoCard 
-              icon={Settings}
-              title="You Stay in Control"
-              description="Customize tone, responses, workflows, and permissions. Pronto+ works *your* way, not the other way around."
-              featured
+              description="Trained on real orthodontic workflows."
             />
             <BentoCard 
               icon={Database}
               title="PMS Integrated"
-              description="Connects to all major Ortho PMS systems. Your patient data stays in sync automatically."
+              description="Syncs with major Ortho PMS systems."
+            />
+
+            {/* Row 2 - with center hero card */}
+            <BentoCard 
+              icon={ArrowRightLeft}
+              title="Seamless Handoff"
+              description="Warm, context-aware transitions to staff."
+            />
+            
+            {/* Center Hero Card - spans 2 columns and 2 rows */}
+            <div className="col-span-2 row-span-2 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 border-2 border-primary/30 flex flex-col items-center justify-center text-center">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground leading-tight">
+                The #1 AI Receptionist For Orthodontic Offices.
+              </h2>
+            </div>
+            
+            <BentoCard 
+              icon={Settings}
+              title="You Stay in Control"
+              description="Customize tone, responses, and workflows."
+              featured
             />
 
             {/* Row 3 */}
             <BentoCard 
               icon={Shield}
               title="HIPAA Compliant"
-              description="Enterprise-grade security out of the box. Your patient data is always protected."
+              description="Enterprise-grade security built in."
             />
             <BentoCard 
               icon={Globe}
               title="Multi-Lingual"
-              description="Serve Spanish-speaking families and beyond. Break down language barriers in your practice."
+              description="Serve Spanish-speaking families and beyond."
               featured
             />
-          </div>
 
-          {/* Bottom Row - Full width cards */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-700 delay-100 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Row 4 */}
             <BentoCard 
               icon={Bot}
               title="AI-to-AI Ready"
-              description="As Google, OpenTable, and other AI agents evolve, Pronto+ speaks their language. Your practice won't get skipped in the agent-to-agent revolution."
+              description="Speaks the language of evolving AI agents."
               featured
-              className="md:col-span-1"
             />
             <BentoCard 
               icon={FileCheck}
               title="Insurance Verification"
-              description="Instant benefit checks. Parents get clear answers about coverage before you hang up. Removes friction from 'yes.'"
-              className="md:col-span-1"
+              description="Instant benefit checks before you hang up."
+            />
+            <BentoCard 
+              icon={Zap}
+              title="24/7 Coverage"
+              description="After-hours or around the clock."
+            />
+            <BentoCard 
+              icon={ArrowRightLeft}
+              title="Smart Routing"
+              description="Calls go exactly where they need to."
             />
           </div>
 
