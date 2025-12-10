@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import foundingPartnership from "@/assets/founding-partnership.jpg";
+import waveDecoration from "@/assets/wave-decoration-ai.png";
 
 interface HowToJoinProps {
   onSignupClick?: () => void;
@@ -39,6 +41,7 @@ export const HowToJoin = ({ onSignupClick }: HowToJoinProps) => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const { ref: exchangeRef, isVisible: exchangeVisible } = useScrollReveal();
   const { ref: ctaRef, isVisible: ctaVisible } = useScrollReveal();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
 
   const benefits = [
     {
@@ -60,11 +63,21 @@ export const HowToJoin = ({ onSignupClick }: HowToJoinProps) => {
   ];
 
   return (
-    <section className="relative py-32 md:py-40 overflow-hidden bg-muted/30">
+    <section className="relative py-32 md:py-40 overflow-hidden bg-background">
       {/* Floating orbs */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/3 rounded-full blur-3xl" />
+      
+      {/* Wave texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `url(${waveDecoration})`,
+          backgroundSize: '700px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto space-y-16 md:space-y-20">
@@ -94,17 +107,35 @@ export const HowToJoin = ({ onSignupClick }: HowToJoinProps) => {
             ))}
           </div>
 
-          {/* Exchange Card */}
+          {/* Exchange Card with Image */}
           <div 
             ref={exchangeRef}
-            className={`relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl p-8 md:p-10 text-center transition-all duration-700 ${exchangeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-700 ${exchangeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <p className="text-base md:text-lg leading-relaxed">
-              <span className="font-semibold text-foreground">In exchange:</span>{" "}
-              <span className="text-muted-foreground">
-                Share honest feedback as you use Pronto+ (weekly check-ins) and optionally provide a case study or testimonial to help other orthodontists discover the power of AI-augmented front desks.
-              </span>
-            </p>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Image */}
+              <div 
+                ref={imageRef}
+                className={`transition-all duration-700 delay-150 ${imageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+              >
+                <div className="relative">
+                  <div className="absolute -inset-3 bg-primary/10 rounded-2xl blur-xl" />
+                  <img 
+                    src={foundingPartnership} 
+                    alt="Partnership between ProntoPlus and orthodontic practices" 
+                    className="relative rounded-2xl shadow-lg"
+                  />
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="space-y-4 text-center md:text-left">
+                <h3 className="text-xl font-semibold text-foreground tracking-tight">In exchange:</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Share honest feedback as you use Pronto+ (weekly check-ins) and optionally provide a case study or testimonial to help other orthodontists discover the power of AI-augmented front desks.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* CTA */}

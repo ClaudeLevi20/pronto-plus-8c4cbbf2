@@ -1,4 +1,6 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import waveDecoration from "@/assets/wave-decoration-ai.png";
+import foundingDashboard from "@/assets/founding-dashboard.jpg";
 
 const BenefitCard = ({ 
   title, 
@@ -38,6 +40,7 @@ const BenefitCard = ({
 
 export const InterestSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
 
   const benefits = [
     {
@@ -57,18 +60,28 @@ export const InterestSection = () => {
   return (
     <section 
       id="interest"
-      className="relative py-32 md:py-40 bg-background overflow-hidden"
+      className="relative py-32 md:py-40 bg-muted/30 overflow-hidden"
     >
       {/* Floating orbs */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+      
+      {/* Wave texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `url(${waveDecoration})`,
+          backgroundSize: '600px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div 
             ref={headerRef}
-            className={`text-center mb-20 md:mb-24 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`text-center mb-16 md:mb-20 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
               Meet Pronto+.
@@ -76,6 +89,21 @@ export const InterestSection = () => {
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Your front desk superpower. Handles the repetitive. Frees your team for what matters.
             </p>
+          </div>
+
+          {/* Dashboard Image */}
+          <div 
+            ref={imageRef}
+            className={`mb-16 md:mb-20 transition-all duration-700 delay-100 ${imageVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <div className="relative max-w-4xl mx-auto">
+              <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+              <img 
+                src={foundingDashboard} 
+                alt="Pronto+ dashboard interface showing AI receptionist in action" 
+                className="relative rounded-2xl shadow-2xl shadow-primary/10 border border-border/50"
+              />
+            </div>
           </div>
 
           {/* Three Column Grid */}
