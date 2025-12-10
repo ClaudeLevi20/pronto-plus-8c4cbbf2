@@ -7,7 +7,7 @@ import { InterestSection } from "@/components/founding/InterestSection";
 import { DesireSection } from "@/components/founding/DesireSection";
 
 import { HowToJoin } from "@/components/founding/HowToJoin";
-import { ScarcitySection } from "@/components/founding/ScarcitySection";
+
 import { FoundingCTA } from "@/components/founding/FoundingCTA";
 import { FoundingSignupModal } from "@/components/founding/FoundingSignupModal";
 import { StickyFoundingCTA } from "@/components/founding/StickyFoundingCTA";
@@ -26,7 +26,7 @@ const Founding100 = () => {
         <DesireSection onSignupClick={() => setIsSignupModalOpen(true)} />
         
         <HowToJoin onSignupClick={() => setIsSignupModalOpen(true)} />
-        <ScarcitySection />
+        
         <FoundingFAQ />
         <FoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
       </main>
