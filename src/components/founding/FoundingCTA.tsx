@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import foundingOrthodontist from "@/assets/founding-orthodontist.jpg";
+import waveDecoration from "@/assets/wave-decoration-ai.png";
 
 interface FoundingCTAProps {
   onSignupClick: () => void;
@@ -11,11 +12,21 @@ export const FoundingCTA = ({ onSignupClick }: FoundingCTAProps) => {
   const { ref: contentRef, isVisible: contentVisible } = useScrollReveal();
 
   return (
-    <section className="relative py-32 md:py-40 bg-muted/30 overflow-hidden">
+    <section className="relative py-32 md:py-40 bg-background overflow-hidden">
       {/* Floating orbs */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 right-0 w-72 h-72 bg-primary/3 rounded-full blur-3xl" />
+      
+      {/* Wave texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `url(${waveDecoration})`,
+          backgroundSize: '600px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">

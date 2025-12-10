@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import waveLines from "@/assets/wave-lines.png";
 
 export const FoundingFAQ = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
@@ -54,10 +55,20 @@ export const FoundingFAQ = () => {
   ];
 
   return (
-    <section className="relative py-32 md:py-40 bg-background overflow-hidden">
+    <section className="relative py-32 md:py-40 bg-muted/30 overflow-hidden">
       {/* Floating orbs */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+      
+      {/* Wave texture overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `url(${waveLines})`,
+          backgroundSize: '900px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto space-y-16">
