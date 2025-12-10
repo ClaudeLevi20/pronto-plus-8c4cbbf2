@@ -1,163 +1,125 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Calendar, Shield, Zap, Users, Settings, Clock, CheckCircle } from "lucide-react";
-import wave12 from "@/assets/wave-12.png";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 interface DesireSectionProps {
   onSignupClick: () => void;
 }
 
+const BentoCard = ({ 
+  title, 
+  description, 
+  className = "",
+  featured = false
+}: { 
+  title: string; 
+  description: string; 
+  className?: string;
+  featured?: boolean;
+}) => (
+  <div className={`p-6 rounded-2xl transition-all ${
+    featured 
+      ? "bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 hover:border-primary/40" 
+      : "bg-card/80 border border-border/50 hover:border-primary/30"
+  } ${className}`}>
+    <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
+    <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+  </div>
+);
+
 export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const { ref: gridRef, isVisible: gridVisible } = useScrollReveal();
   const { ref: resultRef, isVisible: resultVisible } = useScrollReveal();
 
   return (
     <section 
       id="desire"
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-card/80"
-      style={{
-        backgroundImage: `url(${wave12})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="py-24 relative overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-12">
           
+          {/* Header */}
+          <div 
+            ref={headerRef}
+            className={`text-center mb-12 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+              The #1 AI Receptionist For Orthodontic Offices.
+            </h2>
+          </div>
+
           {/* Bento Grid */}
           <div 
             ref={gridRef}
-            className={`grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`grid grid-cols-1 md:grid-cols-3 gap-4 transition-all duration-700 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             {/* Row 1 */}
-            {/* Ortho-First */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
-              <Zap className="h-8 w-8 text-primary mb-3" />
-              <p className="text-xs text-muted-foreground">Built for</p>
-              <p className="text-lg font-bold text-foreground">Orthodontics</p>
-              <p className="text-xs text-muted-foreground mt-1">Only</p>
-            </div>
-
-            {/* 24/7 */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
-              <p className="text-xs text-muted-foreground">Available</p>
-              <p className="text-3xl md:text-4xl font-bold text-gradient">24/7</p>
-              <p className="text-xs text-muted-foreground">Coverage</p>
-            </div>
-
-            {/* No missed calls */}
-            <div className="col-span-1 p-5 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all flex flex-col justify-center">
-              <p className="text-primary text-2xl md:text-3xl font-bold">0</p>
-              <p className="text-sm text-foreground font-medium">Missed Calls</p>
-              <p className="text-xs text-muted-foreground">Ever again</p>
-            </div>
-
-            {/* Set up time */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
-              <Clock className="h-6 w-6 text-muted-foreground mb-2" />
-              <p className="text-xs text-muted-foreground">Set up in</p>
-              <p className="text-2xl font-bold text-foreground">Minutes</p>
-            </div>
-
-            {/* No IT */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
-              <Settings className="h-6 w-6 text-muted-foreground mb-2" />
-              <p className="text-sm font-medium text-foreground">No IT</p>
-              <p className="text-xs text-muted-foreground">No hardware</p>
-            </div>
+            <BentoCard 
+              title="Never Misses a Call"
+              description="100% uptime. Whether covering after-hours or 24/7, Pronto+ answers every single inbound call."
+            />
+            <BentoCard 
+              title="Instant Response"
+              description="Zero wait times. Patients hear a warm voice on ring one, every time."
+              featured
+            />
+            <BentoCard 
+              title="Ortho IQ"
+              description="Trained on real orthodontic workflows. Understands Phase 1, Invisalign, treatment plans, emergency protocols."
+            />
 
             {/* Row 2 */}
-            {/* Understands */}
-            <div className="col-span-1 md:row-span-2 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
-              <p className="text-xs text-muted-foreground mb-3">Understands</p>
-              <div className="space-y-2">
-                {["Braces", "Aligners", "Phase 1 & 2", "Emergencies", "Parent Qs"].map((item) => (
-                  <p key={item} className="text-sm text-foreground">{item}</p>
-                ))}
-              </div>
-            </div>
+            <BentoCard 
+              title="Seamless Handoff"
+              description="When a call needs a human touch, the transition is warm and context-aware. Your staff knows exactly what to do."
+            />
+            <BentoCard 
+              title="You Stay in Control"
+              description="Customize tone, responses, workflows, and permissions. Pronto+ works *your* way, not the other way around."
+              featured
+            />
+            <BentoCard 
+              title="PMS Integrated"
+              description="Connects to all major Ortho PMS systems. Your patient data stays in sync automatically."
+            />
 
-            {/* CENTER - Meet Pronto+ */}
-            <div className="col-span-2 md:col-span-3 row-span-2 p-8 rounded-3xl bg-gradient-to-br from-card via-card/90 to-card/80 border-2 border-primary/30 hover:border-primary/50 transition-all flex flex-col justify-center items-center text-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
-              <div className="relative z-10">
-                <p className="text-sm text-muted-foreground mb-2">Introducing</p>
-                <h2 className="text-4xl md:text-6xl font-bold mb-2">
-                  <span className="text-gradient">Pronto+</span>
-                </h2>
-                <p className="text-lg md:text-xl text-foreground font-medium mb-4">
-                  AI Receptionist
-                </p>
-                <p className="text-sm text-muted-foreground max-w-sm">
-                  Solves the three biggest revenue leaks in ortho practices with one simple system
-                </p>
-              </div>
-            </div>
+            {/* Row 3 */}
+            <BentoCard 
+              title="HIPAA Compliant"
+              description="Enterprise-grade security out of the box. Your patient data is always protected."
+            />
+            <BentoCard 
+              title="Multi-Lingual"
+              description="Serve Spanish-speaking families and beyond. Break down language barriers in your practice."
+              featured
+            />
 
-            {/* Supports team */}
-            <div className="col-span-1 md:row-span-2 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-between">
-              <Users className="h-8 w-8 text-primary" />
-              <div className="mt-auto">
-                <p className="text-lg font-bold text-foreground">Supports</p>
-                <p className="text-sm text-muted-foreground">Your Team</p>
-                <p className="text-xs text-muted-foreground mt-2">Not replaces them</p>
-              </div>
+            {/* Row 4 - Wider cards */}
+            <div className="col-span-1 md:col-span-1 row-span-1 md:row-start-3">
+              {/* Placeholder for grid alignment */}
             </div>
+          </div>
 
-            {/* Row 3 - Agents */}
-            {/* Receptionist Agent */}
-            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
-              <Phone className="h-6 w-6 text-primary mb-2" />
-              <p className="text-sm font-semibold text-foreground">Receptionist</p>
-              <p className="text-xs text-muted-foreground">Agent</p>
-            </div>
-
-            {/* Booking Agent */}
-            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
-              <Calendar className="h-6 w-6 text-primary mb-2" />
-              <p className="text-sm font-semibold text-foreground">Booking</p>
-              <p className="text-xs text-muted-foreground">Agent</p>
-            </div>
-
-            {/* Insurance Agent */}
-            <div className="col-span-1 p-4 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all">
-              <Shield className="h-6 w-6 text-primary mb-2" />
-              <p className="text-sm font-semibold text-foreground">Insurance</p>
-              <p className="text-xs text-muted-foreground">Agent</p>
-            </div>
-
-            {/* Row 4 */}
-            {/* Calmer team */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
-              <CheckCircle className="h-5 w-5 text-primary mb-2" />
-              <p className="text-sm font-medium text-foreground">Calmer Team</p>
-            </div>
-
-            {/* Happier patients */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center">
-              <CheckCircle className="h-5 w-5 text-primary mb-2" />
-              <p className="text-sm font-medium text-foreground">Happier Patients</p>
-            </div>
-
-            {/* The Result - spans 2 */}
-            <div className="col-span-2 p-5 rounded-2xl bg-gradient-to-r from-primary/15 to-primary/5 border border-primary/20 flex flex-col justify-center items-center text-center">
-              <p className="text-xs text-muted-foreground">The Result</p>
-              <p className="text-xl md:text-2xl font-bold text-gradient">Predictable Growth</p>
-              <p className="text-xs text-muted-foreground">Fewer lost starts</p>
-            </div>
-
-            {/* All designed for ortho */}
-            <div className="col-span-1 p-5 rounded-2xl bg-card/80 border border-border/50 hover:border-primary/30 transition-all flex flex-col justify-center items-center text-center">
-              <p className="text-xs text-muted-foreground">All designed for</p>
-              <p className="text-lg font-bold text-primary">Ortho</p>
-            </div>
+          {/* Bottom Row - Full width cards */}
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-700 delay-100 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <BentoCard 
+              title="AI-to-AI Ready"
+              description="As Google, OpenTable, and other AI agents evolve, Pronto+ speaks their language. Your practice won't get skipped in the agent-to-agent revolution."
+              featured
+              className="md:col-span-1"
+            />
+            <BentoCard 
+              title="Insurance Verification"
+              description="Instant benefit checks. Parents get clear answers about coverage before you hang up. Removes friction from 'yes.'"
+              className="md:col-span-1"
+            />
           </div>
 
           {/* CTA Section */}
           <div 
             ref={resultRef}
-            className={`text-center space-y-6 transition-all duration-700 delay-200 ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`text-center space-y-6 pt-8 transition-all duration-700 delay-200 ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <p className="text-xl md:text-2xl text-foreground font-semibold max-w-3xl mx-auto">
               For a limited time, <span className="text-gradient">100 practices</span> can access Pronto+ in a way that will never be offered again.
