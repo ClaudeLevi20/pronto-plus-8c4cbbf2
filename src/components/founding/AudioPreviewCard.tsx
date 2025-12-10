@@ -7,22 +7,22 @@ interface AudioPreviewCardProps {
 }
 
 const AudioWaveform = () => {
-  const [heights, setHeights] = useState([12, 24, 16, 28, 12, 20, 8]);
+  const [heights, setHeights] = useState([12, 24, 16, 28, 12, 20, 8, 16, 24]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHeights(prev => prev.map(() => Math.random() * 20 + 8));
-    }, 150);
+      setHeights(prev => prev.map(() => Math.random() * 24 + 8));
+    }, 120);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-1 h-10">
+    <div className="flex items-center justify-center gap-[3px] h-12">
       {heights.map((height, i) => (
         <div
           key={i}
-          className="w-1 rounded-full bg-primary transition-all duration-150"
+          className="w-[3px] rounded-full bg-gradient-to-t from-primary/60 to-primary transition-all duration-100 ease-out"
           style={{ height: `${height}px` }}
         />
       ))}
@@ -35,32 +35,42 @@ export const AudioPreviewCard = ({ onClick }: AudioPreviewCardProps) => {
     <div
       onClick={onClick}
       className={cn(
-        "group cursor-pointer bg-card rounded-3xl shadow-xl border overflow-hidden",
-        "transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]",
-        "w-full max-w-md mx-auto"
+        "group cursor-pointer glass rounded-3xl overflow-hidden",
+        "transition-all duration-500 ease-apple",
+        "hover:shadow-float hover:scale-[1.02]",
+        "w-full max-w-md mx-auto",
+        "border-glow"
       )}
     >
-      <div className="p-10 md:p-12 flex flex-col items-center space-y-8">
-        {/* Play Button */}
+      <div className="p-10 md:p-14 flex flex-col items-center space-y-8">
+        {/* Play Button - Refined with glow */}
         <div className={cn(
-          "w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center",
-          "bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300"
+          "relative w-28 h-28 md:w-32 md:h-32 rounded-full flex items-center justify-center",
+          "bg-primary/10 border border-primary/20",
+          "group-hover:bg-primary/15 transition-all duration-500 ease-apple",
+          "animate-pulse-glow"
         )}>
-          <Play className="w-10 h-10 md:w-12 md:h-12 text-primary ml-1" />
+          {/* Inner glow ring */}
+          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/20 to-transparent" />
+          <Play className="w-12 h-12 md:w-14 md:h-14 text-primary ml-1.5 relative z-10" />
         </div>
 
-        {/* Title */}
+        {/* Title - Clean typography */}
         <div className="text-center space-y-2">
-          <h3 className="font-semibold text-xl md:text-2xl">Inbound Call: New Patient</h3>
-          <p className="text-base text-muted-foreground">Listening to prompt...</p>
+          <h3 className="font-semibold text-xl md:text-2xl tracking-tight">
+            Inbound Call: New Patient
+          </h3>
+          <p className="text-base text-muted-foreground">
+            Hear Pronto in action
+          </p>
         </div>
 
         {/* Audio Waveform Animation */}
         <AudioWaveform />
 
-        {/* Subtle CTA */}
-        <p className="text-sm tracking-widest text-muted-foreground uppercase font-medium">
-          Listen to Pronto Live
+        {/* Subtle CTA - Minimal */}
+        <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase font-medium">
+          Listen to Pronto Live →
         </p>
       </div>
     </div>
