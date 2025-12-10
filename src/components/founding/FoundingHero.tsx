@@ -18,7 +18,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
         <div className="orb orb-primary w-[600px] h-[600px] -top-40 -right-40 animate-float-slow" />
         <div className="orb orb-secondary w-[400px] h-[400px] top-1/2 -left-32 animate-float-delayed" />
         <div className="orb orb-accent w-[300px] h-[300px] bottom-20 right-1/4 animate-float" />
-        
+
         {/* Subtle grid overlay */}
         <div className="absolute inset-0 geometric-grid opacity-30" />
 
@@ -35,14 +35,14 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
 
               {/* Headline - Tight, powerful */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance">
-                Stop Losing Starts to{" "}
-                <span className="text-gradient">Voicemail</span>
+                Stop Losing Starts to <span className="text-gradient">Voicemail.</span>
+                Future-Proof Your Practice.
               </h1>
 
               {/* Subheadline - Clean, light */}
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                The first AI Receptionist trained specifically for orthodontics. 
-                Answers, books, and verifies insurance—so you never miss a patient again.
+                The first AI Receptionist trained specifically for orthodontics. Answers, books, and verifies
+                insurance—so you never miss a patient again.
               </p>
 
               {/* Countdown - Refined */}
@@ -52,11 +52,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
 
               {/* CTA - Prominent pill button */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <Button 
-                  size="xl" 
-                  variant="hero"
-                  onClick={onSignupClick}
-                >
+                <Button size="xl" variant="hero" onClick={onSignupClick}>
                   Join the Founders Cohort for $1
                 </Button>
               </div>
