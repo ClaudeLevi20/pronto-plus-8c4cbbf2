@@ -1,107 +1,74 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PhoneMissed, Clock, Users } from "lucide-react";
-import wave15 from "@/assets/wave-15.png";
-
-const highlightStats = (text: string) => {
-  // Regex to match percentages, dollar amounts, and key numbers like "21x", "3 rings"
-  const pattern = /(\d+–?\d*%|\$[\d,]+[kKmM]?(?:\/year)?(?:–\$[\d,]+[kKmM]?\+?)?|\d+x|\d+ rings?)/g;
-  
-  const parts = text.split(pattern);
-  
-  return parts.map((part, index) => {
-    // Check if this part matches the pattern (odd indices after split with capturing group)
-    if (pattern.test(part)) {
-      pattern.lastIndex = 0; // Reset regex state
-      return (
-        <span key={index} className="text-primary font-semibold">
-          {part}
-        </span>
-      );
-    }
-    return part;
-  });
-};
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, Zap } from "lucide-react";
 
 export const WhyPilotExists = () => {
   const problems = [
     {
-      icon: PhoneMissed,
-      title: "Missed Calls (During + After Hours)",
-      stats: [
-        "Orthodontic practices miss 32–38% of inbound calls.",
-        "75% of callers who hit voicemail never call back.",
-        "Missing just one new patient call per day can approach $1M/year in lost potential production.",
-      ],
-      translation: "Every missed call is a start you may never recover.",
+      icon: <Phone className="h-8 w-8 text-foreground" />,
+      title: "35% Missed Calls",
+      description: "If a new patient hits voicemail, 75% hang up and call a competitor. You aren't just missing a call; you're donating a start.",
     },
     {
-      icon: Clock,
-      title: "Slow Answer Times",
-      stats: [
-        "Families won't wait.",
-        "If calls aren't answered fast, they hang up and book elsewhere.",
-        "Responding within 3 rings makes callers 21x more likely to convert.",
-        "Most practices can't hit that consistently—especially during peak hours.",
-      ],
-      translation: "Even answered calls become lost opportunities when the response is slow.",
+      icon: <span className="text-3xl">⚡</span>,
+      title: "The Speed Trap",
+      description: "Responding within 5 minutes increases conversion by 21x. An hour later? The opportunity is gone.",
     },
     {
-      icon: Users,
-      title: "Front-Desk Overload",
-      stats: [
-        "Your team is doing everything—checking in patients, managing schedules, handling emergencies, and answering nonstop calls.",
-        "63% of dental team members report frequent burnout",
-        "Front desk roles have the highest turnover",
-        "Each departure costs $10k–$70k+ in lost productivity",
-      ],
-      translation: "When your team is stretched thin, calls slip… and revenue slips with them.",
+      icon: <span className="text-3xl">😓</span>,
+      title: "Front Desk Burnout",
+      description: "Your staff is drowning in repetitive FAQs. Overwhelmed staff make mistakes, and mistakes cost money.",
     },
   ];
 
   return (
     <section 
       id="problems"
-      className="py-24 bg-card/50 relative overflow-hidden"
-      style={{
-        backgroundImage: `url(${wave15})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+      className="py-24 bg-muted/30 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-5xl mx-auto space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
-              The Three Silent Problems{" "}
-              <span className="text-gradient">Hurting Ortho Practices</span>
+              The 3 Invisible Leaks<br />
+              Draining Your Practice.
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {problems.map((problem, index) => (
-              <Card key={index} className="border-border/50 hover:border-primary/30 transition-colors">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <problem.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{problem.title}</CardTitle>
+              <Card key={index} className="border-border/30 bg-card shadow-sm">
+                <CardContent className="pt-6 space-y-4">
+                  <div className="mb-2">
+                    {problem.icon}
                   </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-2 text-muted-foreground text-sm list-disc list-inside">
-                    {problem.stats.map((stat, i) => (
-                      <li key={i} className="leading-relaxed">{highlightStats(stat)}</li>
-                    ))}
-                  </ul>
-                  <p className="text-primary font-semibold text-sm italic border-t border-border/50 pt-4">
-                    {problem.translation}
+                  <h3 className="text-xl font-bold">{problem.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {problem.description}
                   </p>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+          {/* AI Agent Evolution Card */}
+          <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <CardContent className="pt-6 space-y-4 relative">
+              <span className="absolute top-4 right-4 text-xs font-semibold bg-primary/20 text-primary px-3 py-1 rounded-full">
+                NEW THREAT
+              </span>
+              <div className="text-3xl">🤖</div>
+              <h3 className="text-xl font-bold text-primary">The AI Agent Evolution</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Google Search Labs now lets opted-in U.S. users book restaurants and services directly from AI Mode. Bookings for local services are next. Google is evolving from search engine to agent.
+              </p>
+              <p className="text-destructive font-semibold">
+                If your practice can't talk to AI agents, you're invisible.
+              </p>
+              <p className="text-muted-foreground italic text-sm">
+                With missed calls, you know you lost 35% of calls. With this? You won't even know patients are being routed to competitors' AI-ready practices.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
