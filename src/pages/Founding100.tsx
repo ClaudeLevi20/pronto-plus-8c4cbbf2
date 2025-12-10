@@ -5,7 +5,7 @@ import { FoundingHero } from "@/components/founding/FoundingHero";
 import { WhyPilotExists } from "@/components/founding/WhyPilotExists";
 import { InterestSection } from "@/components/founding/InterestSection";
 import { DesireSection } from "@/components/founding/DesireSection";
-import { HowProntoWorks } from "@/components/founding/HowProntoWorks";
+
 import { HowToJoin } from "@/components/founding/HowToJoin";
 import { ScarcitySection } from "@/components/founding/ScarcitySection";
 import { FoundingCTA } from "@/components/founding/FoundingCTA";
@@ -24,7 +24,7 @@ const Founding100 = () => {
         <WhyPilotExists />
         <InterestSection />
         <DesireSection onSignupClick={() => setIsSignupModalOpen(true)} />
-        <HowProntoWorks />
+        
         <HowToJoin />
         <ScarcitySection />
         <FoundingFAQ />
