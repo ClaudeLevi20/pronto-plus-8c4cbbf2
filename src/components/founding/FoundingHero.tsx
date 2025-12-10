@@ -37,11 +37,11 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
             {/* Left Column - Content */}
             <div className="space-y-6 text-center lg:text-left">
               <Badge variant="outline" className="border-primary text-primary px-6 py-2 text-sm font-semibold">
-                FOUNDING 100
+                Attention: Orthodontists
               </Badge>
 
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                How To Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
+                Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
                 Practice
               </h1>
 
@@ -69,11 +69,7 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
         </div>
       </section>
 
-      <VoiceDemoModal 
-        open={isDemoOpen} 
-        onOpenChange={setIsDemoOpen} 
-        autoStart={true}
-      />
+      <VoiceDemoModal open={isDemoOpen} onOpenChange={setIsDemoOpen} autoStart={true} />
     </>
   );
 };
