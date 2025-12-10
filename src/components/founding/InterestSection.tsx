@@ -14,18 +14,24 @@ const BenefitCard = ({
   return (
     <div 
       ref={ref}
-      className={`transition-all duration-700 delay-${index * 100} ${
+      className={`group relative p-8 rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-700 hover:bg-card/80 hover:border-border hover:shadow-lg ${
         isVisible 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
       }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
-      <h3 className="text-xl font-bold text-primary mb-4">
-        {title}
-      </h3>
-      <p className="text-muted-foreground leading-relaxed">
-        {description}
-      </p>
+      {/* Subtle glow on hover */}
+      <div className="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="relative z-10">
+        <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
+          {title}
+        </h3>
+        <p className="text-muted-foreground leading-relaxed">
+          {description}
+        </p>
+      </div>
     </div>
   );
 };
@@ -51,25 +57,29 @@ export const InterestSection = () => {
   return (
     <section 
       id="interest"
-      className="py-24 bg-background"
+      className="relative py-32 md:py-40 bg-background overflow-hidden"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+      {/* Floating orbs */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div 
             ref={headerRef}
-            className={`text-center mb-20 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`text-center mb-20 md:mb-24 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
               Meet Pronto+.
             </h2>
-            <p className="text-xl text-muted-foreground italic max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Your front desk superpower. Handles the repetitive. Frees your team for what matters.
             </p>
           </div>
 
           {/* Three Column Grid */}
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {benefits.map((benefit, index) => (
               <BenefitCard 
                 key={index} 
