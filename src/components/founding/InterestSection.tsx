@@ -1,6 +1,5 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import waveDecoration from "@/assets/wave-decoration-ai.png";
-import foundingDashboard from "@/assets/founding-dashboard.jpg";
 
 const BenefitCard = ({ 
   title, 
@@ -40,7 +39,6 @@ const BenefitCard = ({
 
 export const InterestSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
-  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
 
   const benefits = [
     {
@@ -89,21 +87,6 @@ export const InterestSection = () => {
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Your front desk superpower. Handles the repetitive. Frees your team for what matters.
             </p>
-          </div>
-
-          {/* Dashboard Image */}
-          <div 
-            ref={imageRef}
-            className={`mb-16 md:mb-20 transition-all duration-700 delay-100 ${imageVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-          >
-            <div className="relative max-w-4xl mx-auto">
-              <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
-              <img 
-                src={foundingDashboard} 
-                alt="Pronto+ dashboard interface showing AI receptionist in action" 
-                className="relative rounded-2xl shadow-2xl shadow-primary/10 border border-border/50"
-              />
-            </div>
           </div>
 
           {/* Three Column Grid */}
