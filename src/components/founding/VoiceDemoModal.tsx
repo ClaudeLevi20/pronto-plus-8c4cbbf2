@@ -6,12 +6,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Phone, PhoneOff, Mic, Volume2, VolumeX } from "lucide-react";
+import { Phone, PhoneOff, Mic, Volume2, VolumeX, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface VoiceDemoModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  autoStart?: boolean;
 }
 
 interface Message {
@@ -122,9 +123,11 @@ const getVoices = (): Promise<SpeechSynthesisVoice[]> => {
   });
 };
 
-export const VoiceDemoModal = ({ open, onOpenChange }: VoiceDemoModalProps) => {
+export const VoiceDemoModal = ({ open, onOpenChange, autoStart = false }: VoiceDemoModalProps) => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
+  const [isComplete, setIsComplete] = useState(false);
+  const hasAutoStarted = useRef(false);
   const [isTyping, setIsTyping] = useState(false);
   const [currentSpeaker, setCurrentSpeaker] = useState<"pronto" | "patient" | null>(null);
   const [callDuration, setCallDuration] = useState(0);
@@ -183,10 +186,23 @@ export const VoiceDemoModal = ({ open, onOpenChange }: VoiceDemoModalProps) => {
       setIsTyping(false);
       setCurrentSpeaker(null);
       setCallDuration(0);
+      setIsComplete(false);
       currentMessageIndex.current = 0;
       isSpeaking.current = false;
+      hasAutoStarted.current = false;
     }
   }, [open]);
+
+  // Auto-start the call when modal opens if autoStart is true
+  useEffect(() => {
+    if (open && autoStart && !hasAutoStarted.current && prontoVoice && patientVoice) {
+      hasAutoStarted.current = true;
+      const timer = setTimeout(() => {
+        startCall();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [open, autoStart, prontoVoice, patientVoice]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -230,6 +246,7 @@ export const VoiceDemoModal = ({ open, onOpenChange }: VoiceDemoModalProps) => {
       setIsCallActive(false);
       setCurrentSpeaker(null);
       isSpeaking.current = false;
+      setIsComplete(true);
       return;
     }
 
@@ -260,6 +277,7 @@ export const VoiceDemoModal = ({ open, onOpenChange }: VoiceDemoModalProps) => {
     setIsCallActive(true);
     setVisibleMessages([]);
     setCallDuration(0);
+    setIsComplete(false);
     currentMessageIndex.current = 0;
     isSpeaking.current = false;
 
@@ -401,8 +419,8 @@ export const VoiceDemoModal = ({ open, onOpenChange }: VoiceDemoModalProps) => {
                 onClick={startCall}
                 className="gap-2 px-8"
               >
-                <Phone className="w-5 h-5" />
-                Start Demo Call
+                {isComplete ? <RotateCcw className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
+                {isComplete ? "Replay Demo" : "Start Demo Call"}
               </Button>
             ) : (
               <>
