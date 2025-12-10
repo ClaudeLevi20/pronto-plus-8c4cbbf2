@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { CountdownTimer } from "./CountdownTimer";
 import { AudioPreviewCard } from "./AudioPreviewCard";
 import { VoiceDemoModal } from "./VoiceDemoModal";
-import foundingHero from "@/assets/founding-hero.jpg";
-import wave14 from "@/assets/wave-14.png";
 
 interface FoundingHeroProps {
   onSignupClick: () => void;
@@ -16,53 +13,57 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
 
   return (
     <>
-      <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{
-          backgroundImage: `url(${wave14})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img src={foundingHero} alt="Welcoming orthodontic reception area" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/90 to-background" />
-        </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+        {/* Floating Orbs - Apple-style decorative elements */}
+        <div className="orb orb-primary w-[600px] h-[600px] -top-40 -right-40 animate-float-slow" />
+        <div className="orb orb-secondary w-[400px] h-[400px] top-1/2 -left-32 animate-float-delayed" />
+        <div className="orb orb-accent w-[300px] h-[300px] bottom-20 right-1/4 animate-float" />
+        
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 geometric-grid opacity-30" />
 
         {/* Content */}
-        <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="container mx-auto px-4 py-32 md:py-40 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             {/* Left Column - Content */}
-            <div className="space-y-6 text-center lg:text-left">
-              <Badge variant="outline" className="border-primary text-primary px-6 py-2 text-sm font-semibold">
+            <div className="space-y-8 text-center lg:text-left">
+              {/* Badge - Minimal Apple style */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-pill glass-subtle text-sm font-medium text-muted-foreground">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Attention: Orthodontists
-              </Badge>
+              </div>
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Stop Losing Starts to <span className="text-gradient">Voicemail & IVR</span> And Future Proof Your
-                Practice
+              {/* Headline - Tight, powerful */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance">
+                Stop Losing Starts to{" "}
+                <span className="text-gradient">Voicemail</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                The first AI Receptionist trained specifically for orthodontics. It answers, books, and verifies
-                insurance—so you never miss a patient again.
+              {/* Subheadline - Clean, light */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                The first AI Receptionist trained specifically for orthodontics. 
+                Answers, books, and verifies insurance—so you never miss a patient again.
               </p>
 
+              {/* Countdown - Refined */}
               <div className="pt-2">
                 <CountdownTimer className="max-w-xl mx-auto lg:mx-0" />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                <Button size="lg" onClick={onSignupClick} className="text-lg px-8 py-6">
+              {/* CTA - Prominent pill button */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                <Button 
+                  size="xl" 
+                  variant="hero"
+                  onClick={onSignupClick}
+                >
                   Join the Founders Cohort for $1
                 </Button>
               </div>
             </div>
 
             {/* Right Column - Audio Preview */}
-            <div className="lg:pl-4">
+            <div className="lg:pl-8">
               <AudioPreviewCard onClick={() => setIsDemoOpen(true)} />
             </div>
           </div>
