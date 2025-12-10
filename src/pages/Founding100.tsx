@@ -25,7 +25,7 @@ const Founding100 = () => {
         <InterestSection />
         <DesireSection onSignupClick={() => setIsSignupModalOpen(true)} />
         
-        <HowToJoin />
+        <HowToJoin onSignupClick={() => setIsSignupModalOpen(true)} />
         <ScarcitySection />
         <FoundingFAQ />
         <FoundingCTA onSignupClick={() => setIsSignupModalOpen(true)} />
