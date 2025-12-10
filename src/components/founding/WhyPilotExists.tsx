@@ -1,12 +1,10 @@
 import { Phone } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import waveLines from "@/assets/wave-lines.png";
-import foundingAgentsDiagram from "@/assets/founding-agents-diagram.jpg";
 
 export const WhyPilotExists = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
-  const { ref: imageRef, isVisible: imageVisible } = useScrollReveal();
   const problems = [
     {
       icon: <Phone className="h-6 w-6" />,
@@ -87,45 +85,29 @@ export const WhyPilotExists = () => {
             {/* Subtle gradient accent */}
             <div className="absolute inset-0 bg-gradient-to-br from-destructive/5 via-transparent to-primary/5 pointer-events-none" />
 
-            <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">
-              {/* Content */}
-              <div className="space-y-6 text-center md:text-left">
-                <span className="inline-flex items-center gap-2 text-xs font-medium bg-destructive/10 text-destructive px-4 py-2 rounded-full">
-                  <span className="w-2 h-2 bg-destructive rounded-full animate-pulse" />
-                  NEW THREAT
-                </span>
+            <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
+              <span className="inline-flex items-center gap-2 text-xs font-medium bg-destructive/10 text-destructive px-4 py-2 rounded-full">
+                <span className="w-2 h-2 bg-destructive rounded-full animate-pulse" />
+                NEW THREAT
+              </span>
 
-                <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">The AI Agent Evolution</h3>
+              <div className="text-4xl">🤖</div>
 
-                <p className="text-muted-foreground leading-relaxed">
-                  Google Search Labs now lets opted-in U.S. users book restaurants and services directly from AI Mode.
-                  Bookings for local services are next. Google is evolving from search engine to agent.
-                </p>
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">The AI Agent Evolution</h3>
 
-                <p className="text-destructive font-semibold text-lg">
-                  If your practice can't talk to AI agents, you're invisible.
-                </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Google Search Labs now lets opted-in U.S. users book restaurants and services directly from AI Mode.
+                Bookings for local services are next. Google is evolving from search engine to agent.
+              </p>
 
-                <p className="text-muted-foreground/80 italic text-sm">
-                  With missed calls, you know you lost 35% of calls. With this? You won't even know patients are being
-                  routed to competitors' AI-ready practices.
-                </p>
-              </div>
+              <p className="text-destructive font-semibold text-lg">
+                If your practice can't talk to AI agents, you're invisible.
+              </p>
 
-              {/* Image */}
-              <div 
-                ref={imageRef}
-                className={`transition-all duration-700 delay-300 ${imageVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              >
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
-                  <img 
-                    src={foundingAgentsDiagram} 
-                    alt="AI agents working together for orthodontic practices" 
-                    className="relative rounded-2xl shadow-xl"
-                  />
-                </div>
-              </div>
+              <p className="text-muted-foreground/80 italic text-sm max-w-xl mx-auto">
+                With missed calls, you know you lost 35% of calls. With this? You won't even know patients are being
+                routed to competitors' AI-ready practices.
+              </p>
             </div>
           </div>
         </div>
