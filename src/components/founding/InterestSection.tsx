@@ -1,59 +1,11 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import waveDecoration from "@/assets/wave-decoration-ai.png";
 
-const BenefitCard = ({ 
-  title, 
-  description,
-  index 
-}: { 
-  title: string;
-  description: string;
-  index: number;
-}) => {
-  const { ref, isVisible } = useScrollReveal();
-  
-  return (
-    <div 
-      ref={ref}
-      className={`group relative p-8 rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-700 hover:bg-card/80 hover:border-border hover:shadow-lg ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
-    >
-      {/* Subtle glow on hover */}
-      <div className="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <div className="relative z-10">
-        <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
-          {title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </div>
-  );
-};
-
 export const InterestSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
-
-  const benefits = [
-    {
-      title: "Your Receptionists Do More of What They Love",
-      description: "Pronto+ takes rescheduling, FAQs, and after-hours calls off their plate. They focus on the relationships and moments that actually matter—greeting patients, solving real problems, building trust.",
-    },
-    {
-      title: "Less Burnout. Better Retention.",
-      description: "Repetitive tasks drain energy. When your staff spends time on human work—conversations, problem-solving, care—they stay engaged, motivated, and with you longer.",
-    },
-    {
-      title: "Better Patient Experience",
-      description: "With Pronto+ handling the busywork, your receptionists have mental space and time to give patients genuine attention. That human touch is irreplaceable.",
-    },
-  ];
+  const { ref: row1Ref, isVisible: row1Visible } = useScrollReveal();
+  const { ref: row2Ref, isVisible: row2Visible } = useScrollReveal();
+  const { ref: row3Ref, isVisible: row3Visible } = useScrollReveal();
 
   return (
     <section 
@@ -79,7 +31,7 @@ export const InterestSection = () => {
           {/* Header */}
           <div 
             ref={headerRef}
-            className={`text-center mb-16 md:mb-20 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            className={`text-center mb-20 md:mb-28 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
               Meet Pronto+.
@@ -89,16 +41,91 @@ export const InterestSection = () => {
             </p>
           </div>
 
-          {/* Three Column Grid */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {benefits.map((benefit, index) => (
-              <BenefitCard 
-                key={index} 
-                title={benefit.title}
-                description={benefit.description}
-                index={index} 
-              />
-            ))}
+          {/* Zig-Zag Layout */}
+          <div className="space-y-20 md:space-y-32">
+            {/* Row 1: Text Left, Visual Right */}
+            <div 
+              ref={row1Ref}
+              className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center transition-all duration-700 ${row1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 text-xs font-medium bg-primary/10 text-primary px-4 py-2 rounded-full">
+                  FOR YOUR TEAM
+                </div>
+                <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+                  Your Receptionists Do More of What They Love
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Pronto+ takes rescheduling, FAQs, and after-hours calls off their plate. They focus on the relationships and moments that actually matter—greeting patients, solving real problems, building trust.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl" />
+                <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-3xl p-8 md:p-12 border border-primary/20">
+                  <div className="text-6xl md:text-8xl mb-6">💬</div>
+                  <p className="text-sm text-muted-foreground italic">
+                    "I finally have time to actually talk to patients instead of being glued to the phone."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Row 2: Visual Left, Text Right */}
+            <div 
+              ref={row2Ref}
+              className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center transition-all duration-700 ${row2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
+              <div className="relative order-2 md:order-1">
+                <div className="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl" />
+                <div className="relative bg-gradient-to-br from-secondary/10 via-secondary/5 to-transparent rounded-3xl p-8 md:p-12 border border-secondary/20">
+                  <div className="text-6xl md:text-8xl mb-6">❤️</div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span className="text-primary font-semibold">87%</span>
+                    <span>reduction in repetitive task time</span>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-6 order-1 md:order-2">
+                <div className="inline-flex items-center gap-2 text-xs font-medium bg-secondary/10 text-secondary-foreground px-4 py-2 rounded-full">
+                  FOR RETENTION
+                </div>
+                <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+                  Less Burnout. Better Retention.
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Repetitive tasks drain energy. When your staff spends time on human work—conversations, problem-solving, care—they stay engaged, motivated, and with you longer.
+                </p>
+              </div>
+            </div>
+
+            {/* Row 3: Text Left, Visual Right */}
+            <div 
+              ref={row3Ref}
+              className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center transition-all duration-700 ${row3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 text-xs font-medium bg-accent/10 text-foreground px-4 py-2 rounded-full">
+                  FOR PATIENTS
+                </div>
+                <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+                  Better Patient Experience
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  With Pronto+ handling the busywork, your receptionists have mental space and time to give patients genuine attention. That human touch is irreplaceable.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-accent/10 rounded-3xl blur-2xl" />
+                <div className="relative bg-gradient-to-br from-accent/10 via-accent/5 to-transparent rounded-3xl p-8 md:p-12 border border-accent/20">
+                  <div className="text-6xl md:text-8xl mb-6">✨</div>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-3 py-1 rounded-full bg-background/50 text-muted-foreground">Genuine attention</span>
+                    <span className="px-3 py-1 rounded-full bg-background/50 text-muted-foreground">Mental space</span>
+                    <span className="px-3 py-1 rounded-full bg-background/50 text-muted-foreground">Human touch</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

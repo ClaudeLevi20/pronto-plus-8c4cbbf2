@@ -24,43 +24,45 @@ export const FoundingHero = ({ onSignupClick }: FoundingHeroProps) => {
 
         {/* Content */}
         <div className="container mx-auto px-4 py-32 md:py-40 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            {/* Left Column - Content */}
-            <div className="space-y-8 text-center lg:text-left">
+          {/* Asymmetric Split: 40/60 */}
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
+            {/* Left Column (40%) - Tight punchy content */}
+            <div className="lg:col-span-2 space-y-8 text-center lg:text-left">
               {/* Badge - Minimal Apple style */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-pill glass-subtle text-sm font-medium text-muted-foreground">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Attention: Orthodontists
               </div>
 
-              {/* Headline - Tight, powerful */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-balance">
+              {/* Headline - Huge, tight */}
+              <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold tracking-tight text-balance leading-[1.1]">
                 Stop Losing Starts to <span className="text-gradient">Voicemail.</span>
-                Future-Proof Your Practice.
               </h1>
 
               {/* Subheadline - Clean, light */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                The first AI Receptionist trained specifically for orthodontics. Answers, books, and verifies
-                insurance—so you never miss a patient again.
+              <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                The first AI Receptionist trained specifically for orthodontics.
               </p>
 
               {/* Countdown - Refined */}
               <div className="pt-2">
-                <CountdownTimer className="max-w-xl mx-auto lg:mx-0" />
+                <CountdownTimer className="max-w-lg" />
               </div>
 
               {/* CTA - Prominent pill button */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+              <div className="pt-4">
                 <Button size="xl" variant="hero" onClick={onSignupClick}>
                   Join the Founders Cohort for $1
                 </Button>
               </div>
             </div>
 
-            {/* Right Column - Audio Preview */}
-            <div className="lg:pl-8">
-              <AudioPreviewCard onClick={() => setIsDemoOpen(true)} />
+            {/* Right Column (60%) - Visual bleeding off-screen */}
+            <div className="lg:col-span-3 relative">
+              {/* Card that bleeds off the right edge */}
+              <div className="lg:translate-x-8 xl:translate-x-16 lg:-mr-8 xl:-mr-16">
+                <AudioPreviewCard onClick={() => setIsDemoOpen(true)} />
+              </div>
             </div>
           </div>
         </div>

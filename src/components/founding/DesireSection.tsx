@@ -6,11 +6,11 @@ import {
   Brain, 
   ArrowRightLeft, 
   Settings, 
-  Database, 
   Shield, 
   Globe, 
   Bot, 
   FileCheck,
+  Clock,
   LucideIcon
 } from "lucide-react";
 import waveLines from "@/assets/wave-lines.png";
@@ -23,27 +23,41 @@ const BentoCard = ({
   title, 
   description, 
   icon: Icon,
-  className = "",
+  size = "small",
   featured = false,
   index = 0
 }: { 
   title: string; 
   description: string; 
   icon: LucideIcon;
-  className?: string;
+  size?: "small" | "tall" | "wide" | "large";
   featured?: boolean;
   index?: number;
 }) => {
   const { ref, isVisible } = useScrollReveal();
   
+  const sizeClasses = {
+    small: "",
+    tall: "md:row-span-2",
+    wide: "md:col-span-2",
+    large: "md:col-span-2 md:row-span-2",
+  };
+
+  const paddingClasses = {
+    small: "p-6",
+    tall: "p-6 md:p-8",
+    wide: "p-6 md:p-8",
+    large: "p-8 md:p-12",
+  };
+  
   return (
     <div 
       ref={ref}
-      className={`group relative p-6 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
+      className={`group relative rounded-3xl backdrop-blur-sm transition-all duration-500 ${sizeClasses[size]} ${paddingClasses[size]} ${
         featured 
           ? "bg-primary/10 border border-primary/20 hover:border-primary/40 hover:bg-primary/15" 
           : "bg-card/50 border border-border/50 hover:border-border hover:bg-card/80"
-      } ${className} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+      } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       {/* Subtle glow on hover */}
@@ -51,14 +65,18 @@ const BentoCard = ({
         featured ? 'bg-primary/10' : 'bg-primary/5'
       }`} />
       
-      <div className="relative z-10">
-        <div className={`inline-flex p-2.5 rounded-2xl mb-4 ${
+      <div className="relative z-10 h-full flex flex-col">
+        <div className={`inline-flex p-2.5 rounded-2xl mb-4 w-fit ${
           featured ? 'bg-primary/20' : 'bg-muted/50'
         }`}>
-          <Icon className={`h-5 w-5 ${featured ? 'text-primary' : 'text-muted-foreground'}`} />
+          <Icon className={`${size === 'large' ? 'h-7 w-7' : 'h-5 w-5'} ${featured ? 'text-primary' : 'text-muted-foreground'}`} />
         </div>
-        <h3 className="text-lg font-semibold text-foreground mb-2 tracking-tight">{title}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+        <h3 className={`font-semibold text-foreground mb-2 tracking-tight ${size === 'large' ? 'text-2xl md:text-3xl' : 'text-lg'}`}>
+          {title}
+        </h3>
+        <p className={`text-muted-foreground leading-relaxed ${size === 'large' ? 'text-base' : 'text-sm'}`}>
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -90,101 +108,87 @@ export const DesireSection = ({ onSignupClick }: DesireSectionProps) => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Bento Grid */}
+          {/* True Masonry/Bento Grid */}
           <div 
             ref={gridRef}
-            className={`grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 transition-all duration-700 ${gridVisible ? 'opacity-100' : 'opacity-100'}`}
+            className={`grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-4 md:gap-5 transition-all duration-700 ${gridVisible ? 'opacity-100' : 'opacity-100'}`}
           >
             {/* Row 1 */}
             <BentoCard 
               icon={Phone}
               title="Never Misses a Call"
-              description="100% uptime. Answers every inbound call."
+              description="100% uptime. Answers every inbound call instantly."
               index={0}
             />
+            
+            {/* AI-to-AI Ready - Large 2x2 (The killer feature) */}
             <BentoCard 
-              icon={Zap}
-              title="Instant Response"
-              description="Zero wait times on ring one."
+              icon={Bot}
+              title="AI-to-AI Ready"
+              description="The future is here. When Google sends AI agents to book appointments, Pronto+ speaks their language. Your practice stays visible while others become invisible."
+              size="large"
               featured
               index={1}
             />
+            
             <BentoCard 
               icon={Brain}
               title="Ortho IQ"
               description="Trained on real orthodontic workflows."
               index={2}
             />
+            
+            {/* Row 2 */}
             <BentoCard 
-              icon={Database}
-              title="PMS Integrated"
-              description="Syncs with major Ortho PMS systems."
+              icon={Zap}
+              title="Instant Response"
+              description="Zero wait times on ring one."
+              featured
               index={3}
             />
-
-            {/* Row 2 - with center hero card */}
-            <BentoCard 
-              icon={ArrowRightLeft}
-              title="Seamless Handoff"
-              description="Warm, context-aware transitions to staff."
-              index={4}
-            />
             
-            {/* Center Hero Card - spans 2 columns and 2 rows */}
-            <div className="col-span-2 row-span-2 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 border border-primary/30 flex flex-col items-center justify-center text-center shadow-lg shadow-primary/20">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground leading-tight tracking-tight">
-                The #1 AI Receptionist For Orthodontic Offices.
-              </h2>
-            </div>
-            
+            {/* 24/7 Coverage - Tall 1x2 */}
             <BentoCard 
-              icon={Settings}
-              title="You Stay in Control"
-              description="Customize tone, responses, and workflows."
+              icon={Clock}
+              title="24/7 Coverage"
+              description="After-hours, weekends, holidays—Pronto+ never sleeps. Your patients always get answered."
+              size="tall"
               featured
-              index={5}
+              index={4}
             />
 
             {/* Row 3 */}
             <BentoCard 
               icon={Shield}
               title="HIPAA Compliant"
-              description="Enterprise-grade security built in."
+              description="Enterprise-grade security."
+              index={5}
+            />
+            <BentoCard 
+              icon={ArrowRightLeft}
+              title="Seamless Handoff"
+              description="Warm transitions to staff."
               index={6}
             />
             <BentoCard 
-              icon={Globe}
-              title="Multi-Lingual"
-              description="Serve Spanish-speaking families and beyond."
-              featured
+              icon={Settings}
+              title="You Stay in Control"
+              description="Customize tone and workflows."
               index={7}
             />
-
+            
             {/* Row 4 */}
             <BentoCard 
-              icon={Bot}
-              title="AI-to-AI Ready"
-              description="Speaks the language of evolving AI agents."
-              featured
+              icon={Globe}
+              title="Multi-Lingual"
+              description="Spanish-speaking families and beyond."
               index={8}
             />
             <BentoCard 
               icon={FileCheck}
               title="Insurance Verification"
-              description="Instant benefit checks before you hang up."
+              description="Instant benefit checks."
               index={9}
-            />
-            <BentoCard 
-              icon={Zap}
-              title="24/7 Coverage"
-              description="After-hours or around the clock."
-              index={10}
-            />
-            <BentoCard 
-              icon={ArrowRightLeft}
-              title="Smart Routing"
-              description="Calls go exactly where they need to."
-              index={11}
             />
           </div>
 
